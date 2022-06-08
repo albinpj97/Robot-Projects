@@ -1,6 +1,4 @@
 tasks:
-  Run all tasks:
-    shell: python -m robot --report NONE --outputdir output --logtitle "Task log" tasks.robot
   
   Run_Orange_HR_Process:
     robotTaskName: Orange HR Process
