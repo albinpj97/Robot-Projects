@@ -1,0 +1,4347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.7.5 on win32)" generated="20220607 16:12:19.960" rpa="true" schemaversion="2">
+<suite id="s1" name="Sample Rcc Run" source="D:\Project\Robocorp\sample_rcc_run">
+<suite id="s1-s1" name="Tasks" source="D:\Project\Robocorp\sample_rcc_run\tasks.robot">
+<test id="s1-s1-t1" name="Orange HR Process">
+<kw name="table extraction" library="keywords">
+<kw name="Orangehr login" library="keywords">
+<kw name="Open Available Browser" library="RPA.Browser">
+<arg>https://opensource-demo.orangehrmlive.com/</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20220607 16:13:01.796" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220607 16:13:01.951" level="INFO">Created download root directory: C:\Users\Q0040\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20220607 16:13:01.954" level="INFO">Created symlink directory: C:\Users\Q0040\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20220607 16:13:01.955" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220607 16:13:04.730" level="INFO">Created Chrome browser with arguments: --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20220607 16:13:04.730" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20220607 16:13:04.730" level="INFO">Opening url 'https://opensource-demo.orangehrmlive.com/'</msg>
+<status status="PASS" starttime="20220607 16:13:01.792" endtime="20220607 16:13:08.659"/>
+</kw>
+<kw name="Maximize Browser Window" library="RPA.Browser">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220607 16:13:08.659" endtime="20220607 16:13:08.785"/>
+</kw>
+<kw name="Get Secret" library="RPA.Robocorp.Vault">
+<var>${secret}</var>
+<arg>orange_hr_credentials</arg>
+<doc>Read a secret from the configured source, e.g. Robocorp Vault,
+and return it as a ``Secret`` object.</doc>
+<msg timestamp="20220607 16:13:08.786" level="INFO">Protecting keyword: RPA.Robocorp.Vault.Get Secret</msg>
+<msg timestamp="20220607 16:13:08.794" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220607 16:13:08.786" endtime="20220607 16:13:08.793"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@id="txtUsername"]</arg>
+<arg>${secret}[username]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:08.796" level="INFO">Typing text 'Admin' into text field '//input[@id="txtUsername"]'.</msg>
+<status status="PASS" starttime="20220607 16:13:08.794" endtime="20220607 16:13:09.011"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@id="txtPassword"]</arg>
+<arg>${secret}[password]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:09.012" level="INFO">Typing text 'admin123' into text field '//input[@id="txtPassword"]'.</msg>
+<status status="PASS" starttime="20220607 16:13:09.012" endtime="20220607 16:13:09.114"/>
+</kw>
+<kw name="Click Button When Visible" library="RPA.Browser">
+<arg>//input[@value="LOGIN"]</arg>
+<doc>Click button identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20220607 16:13:09.140" level="INFO">Clicking button '//input[@value="LOGIN"]'.</msg>
+<status status="PASS" starttime="20220607 16:13:09.115" endtime="20220607 16:13:13.295"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:01.792" endtime="20220607 16:13:13.295"/>
+</kw>
+<kw name="Click Element When Visible" library="RPA.Browser">
+<arg>//b[contains(.,"Recruitment")]</arg>
+<doc>Click element identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20220607 16:13:14.505" level="INFO">Clicking element '//b[contains(.,"Recruitment")]'.</msg>
+<status status="PASS" starttime="20220607 16:13:13.295" endtime="20220607 16:13:16.750"/>
+</kw>
+<kw name="Create Table" library="RPA.Tables">
+<var>${table_data}</var>
+<doc>Create Table object from data.</doc>
+<msg timestamp="20220607 16:13:16.750" level="INFO">Created table: Table(columns=[], rows=0)</msg>
+<msg timestamp="20220607 16:13:16.750" level="INFO">${table_data} = Table(columns=[], rows=0)</msg>
+<status status="PASS" starttime="20220607 16:13:16.750" endtime="20220607 16:13:16.750"/>
+</kw>
+<kw name="Get Element Count" library="RPA.Browser">
+<var>${table_row_count}</var>
+<arg>//table[@id="resultTable"]//tbody//tr</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220607 16:13:16.775" level="INFO">${table_row_count} = 38</msg>
+<status status="PASS" starttime="20220607 16:13:16.750" endtime="20220607 16:13:16.775"/>
+</kw>
+<kw name="Get Element Count" library="RPA.Browser">
+<var>${table_column_count}</var>
+<arg>//table[@id="resultTable"]//tr//th</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220607 16:13:16.791" level="INFO">${table_column_count} = 7</msg>
+<status status="PASS" starttime="20220607 16:13:16.775" endtime="20220607 16:13:16.791"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<iter>
+<var name="${counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tr//th[${counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:16.827" level="INFO">${data} = Vacancy</msg>
+<status status="PASS" starttime="20220607 16:13:16.791" endtime="20220607 16:13:16.827"/>
+</kw>
+<kw name="Add Table Column" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${data}</arg>
+<doc>Append a column to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:16.827" endtime="20220607 16:13:16.827"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${counter}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220607 16:13:16.832" level="INFO">2</msg>
+<status status="PASS" starttime="20220607 16:13:16.832" endtime="20220607 16:13:16.832"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:16.791" endtime="20220607 16:13:16.832"/>
+</iter>
+<iter>
+<var name="${counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tr//th[${counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:16.870" level="INFO">${data} = Candidate</msg>
+<status status="PASS" starttime="20220607 16:13:16.832" endtime="20220607 16:13:16.870"/>
+</kw>
+<kw name="Add Table Column" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${data}</arg>
+<doc>Append a column to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:16.870" endtime="20220607 16:13:16.875"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${counter}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220607 16:13:16.875" level="INFO">3</msg>
+<status status="PASS" starttime="20220607 16:13:16.875" endtime="20220607 16:13:16.875"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:16.832" endtime="20220607 16:13:16.875"/>
+</iter>
+<iter>
+<var name="${counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tr//th[${counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:16.908" level="INFO">${data} = Hiring Manager</msg>
+<status status="PASS" starttime="20220607 16:13:16.875" endtime="20220607 16:13:16.908"/>
+</kw>
+<kw name="Add Table Column" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${data}</arg>
+<doc>Append a column to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:16.908" endtime="20220607 16:13:16.912"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${counter}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220607 16:13:16.912" level="INFO">4</msg>
+<status status="PASS" starttime="20220607 16:13:16.912" endtime="20220607 16:13:16.912"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:16.875" endtime="20220607 16:13:16.912"/>
+</iter>
+<iter>
+<var name="${counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tr//th[${counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:16.954" level="INFO">${data} = Date of Application</msg>
+<status status="PASS" starttime="20220607 16:13:16.912" endtime="20220607 16:13:16.954"/>
+</kw>
+<kw name="Add Table Column" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${data}</arg>
+<doc>Append a column to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:16.954" endtime="20220607 16:13:16.954"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${counter}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220607 16:13:16.954" level="INFO">5</msg>
+<status status="PASS" starttime="20220607 16:13:16.954" endtime="20220607 16:13:16.954"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:16.912" endtime="20220607 16:13:16.954"/>
+</iter>
+<iter>
+<var name="${counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tr//th[${counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:16.999" level="INFO">${data} = Status</msg>
+<status status="PASS" starttime="20220607 16:13:16.954" endtime="20220607 16:13:16.999"/>
+</kw>
+<kw name="Add Table Column" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${data}</arg>
+<doc>Append a column to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:16.999" endtime="20220607 16:13:16.999"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${counter}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220607 16:13:16.999" level="INFO">6</msg>
+<status status="PASS" starttime="20220607 16:13:16.999" endtime="20220607 16:13:16.999"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:16.954" endtime="20220607 16:13:16.999"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:16.791" endtime="20220607 16:13:16.999"/>
+</for>
+<for flavor="IN RANGE">
+<var>${row_counter}</var>
+<value>${1}</value>
+<value>${table_row_count+1}</value>
+<value>${1}</value>
+<iter>
+<var name="${row_counter}">1</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:17.008" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:17.008" endtime="20220607 16:13:17.008"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.062" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.009" endtime="20220607 16:13:17.062"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.065" endtime="20220607 16:13:17.065"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.009" endtime="20220607 16:13:17.065"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.110" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:17.065" endtime="20220607 16:13:17.110"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.110" endtime="20220607 16:13:17.116"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.065" endtime="20220607 16:13:17.116"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.149" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.116" endtime="20220607 16:13:17.149"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.149" endtime="20220607 16:13:17.149"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.116" endtime="20220607 16:13:17.149"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.188" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:17.149" endtime="20220607 16:13:17.188"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.188" endtime="20220607 16:13:17.190"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.149" endtime="20220607 16:13:17.190"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.219" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.190" endtime="20220607 16:13:17.219"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.219" endtime="20220607 16:13:17.219"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.190" endtime="20220607 16:13:17.219"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:17.009" endtime="20220607 16:13:17.219"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:17.219" endtime="20220607 16:13:17.225"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:16.999" endtime="20220607 16:13:17.225"/>
+</iter>
+<iter>
+<var name="${row_counter}">2</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:17.225" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:17.225" endtime="20220607 16:13:17.225"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.262" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.225" endtime="20220607 16:13:17.262"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.262" endtime="20220607 16:13:17.262"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.225" endtime="20220607 16:13:17.262"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.300" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:17.265" endtime="20220607 16:13:17.300"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.300" endtime="20220607 16:13:17.300"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.262" endtime="20220607 16:13:17.300"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.337" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.300" endtime="20220607 16:13:17.337"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.337" endtime="20220607 16:13:17.337"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.300" endtime="20220607 16:13:17.337"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.377" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:17.344" endtime="20220607 16:13:17.377"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.377" endtime="20220607 16:13:17.385"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.337" endtime="20220607 16:13:17.385"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.427" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.385" endtime="20220607 16:13:17.427"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.427" endtime="20220607 16:13:17.427"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.385" endtime="20220607 16:13:17.427"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:17.225" endtime="20220607 16:13:17.427"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:17.435" endtime="20220607 16:13:17.435"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.225" endtime="20220607 16:13:17.435"/>
+</iter>
+<iter>
+<var name="${row_counter}">3</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:17.435" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:17.435" endtime="20220607 16:13:17.435"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.484" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.435" endtime="20220607 16:13:17.484"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.484" endtime="20220607 16:13:17.484"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.435" endtime="20220607 16:13:17.484"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.522" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:17.484" endtime="20220607 16:13:17.522"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.522" endtime="20220607 16:13:17.522"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.484" endtime="20220607 16:13:17.522"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.565" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.522" endtime="20220607 16:13:17.565"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.565" endtime="20220607 16:13:17.565"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.522" endtime="20220607 16:13:17.565"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.600" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:17.565" endtime="20220607 16:13:17.600"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.600" endtime="20220607 16:13:17.607"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.565" endtime="20220607 16:13:17.607"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.646" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.607" endtime="20220607 16:13:17.646"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.646" endtime="20220607 16:13:17.646"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.607" endtime="20220607 16:13:17.646"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:17.435" endtime="20220607 16:13:17.646"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:17.646" endtime="20220607 16:13:17.646"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.435" endtime="20220607 16:13:17.646"/>
+</iter>
+<iter>
+<var name="${row_counter}">4</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:17.646" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:17.646" endtime="20220607 16:13:17.646"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.688" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.654" endtime="20220607 16:13:17.688"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.696" endtime="20220607 16:13:17.696"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.654" endtime="20220607 16:13:17.696"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.735" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:17.696" endtime="20220607 16:13:17.735"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.735" endtime="20220607 16:13:17.735"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.696" endtime="20220607 16:13:17.735"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.768" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.735" endtime="20220607 16:13:17.768"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.768" endtime="20220607 16:13:17.768"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.735" endtime="20220607 16:13:17.768"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.809" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:17.768" endtime="20220607 16:13:17.809"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.809" endtime="20220607 16:13:17.809"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.768" endtime="20220607 16:13:17.809"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.843" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.809" endtime="20220607 16:13:17.843"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.851" endtime="20220607 16:13:17.851"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.809" endtime="20220607 16:13:17.851"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:17.646" endtime="20220607 16:13:17.851"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:17.851" endtime="20220607 16:13:17.851"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.646" endtime="20220607 16:13:17.851"/>
+</iter>
+<iter>
+<var name="${row_counter}">5</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:17.851" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:17.851" endtime="20220607 16:13:17.851"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.890" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.859" endtime="20220607 16:13:17.890"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.890" endtime="20220607 16:13:17.890"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.851" endtime="20220607 16:13:17.890"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.935" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:17.898" endtime="20220607 16:13:17.935"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.935" endtime="20220607 16:13:17.935"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.898" endtime="20220607 16:13:17.935"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:17.968" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:17.935" endtime="20220607 16:13:17.968"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:17.968" endtime="20220607 16:13:17.979"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.935" endtime="20220607 16:13:17.979"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.012" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:17.979" endtime="20220607 16:13:18.012"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.012" endtime="20220607 16:13:18.020"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.979" endtime="20220607 16:13:18.020"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.059" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.020" endtime="20220607 16:13:18.059"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.059" endtime="20220607 16:13:18.059"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.020" endtime="20220607 16:13:18.059"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:17.851" endtime="20220607 16:13:18.059"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:18.059" endtime="20220607 16:13:18.059"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:17.851" endtime="20220607 16:13:18.059"/>
+</iter>
+<iter>
+<var name="${row_counter}">6</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:18.067" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:18.066" endtime="20220607 16:13:18.067"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.106" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.067" endtime="20220607 16:13:18.106"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.106" endtime="20220607 16:13:18.106"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.067" endtime="20220607 16:13:18.106"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.155" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:18.114" endtime="20220607 16:13:18.155"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.155" endtime="20220607 16:13:18.155"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.114" endtime="20220607 16:13:18.155"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.194" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.155" endtime="20220607 16:13:18.194"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.194" endtime="20220607 16:13:18.198"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.155" endtime="20220607 16:13:18.198"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.235" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:18.199" endtime="20220607 16:13:18.235"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.235" endtime="20220607 16:13:18.235"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.199" endtime="20220607 16:13:18.235"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.266" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.235" endtime="20220607 16:13:18.266"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.268" endtime="20220607 16:13:18.268"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.235" endtime="20220607 16:13:18.268"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:18.067" endtime="20220607 16:13:18.268"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:18.268" endtime="20220607 16:13:18.268"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.059" endtime="20220607 16:13:18.268"/>
+</iter>
+<iter>
+<var name="${row_counter}">7</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:18.268" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:18.268" endtime="20220607 16:13:18.268"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.299" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.275" endtime="20220607 16:13:18.299"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.299" endtime="20220607 16:13:18.299"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.268" endtime="20220607 16:13:18.299"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.320" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:18.299" endtime="20220607 16:13:18.320"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.329" endtime="20220607 16:13:18.329"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.299" endtime="20220607 16:13:18.329"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.354" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.331" endtime="20220607 16:13:18.354"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.354" endtime="20220607 16:13:18.354"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.329" endtime="20220607 16:13:18.354"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.387" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:18.354" endtime="20220607 16:13:18.387"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.387" endtime="20220607 16:13:18.387"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.354" endtime="20220607 16:13:18.387"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.412" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.387" endtime="20220607 16:13:18.412"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.412" endtime="20220607 16:13:18.420"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.387" endtime="20220607 16:13:18.420"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:18.268" endtime="20220607 16:13:18.420"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:18.420" endtime="20220607 16:13:18.420"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.268" endtime="20220607 16:13:18.420"/>
+</iter>
+<iter>
+<var name="${row_counter}">8</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:18.420" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:18.420" endtime="20220607 16:13:18.420"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.456" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.420" endtime="20220607 16:13:18.456"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.456" endtime="20220607 16:13:18.456"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.420" endtime="20220607 16:13:18.456"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.489" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:18.456" endtime="20220607 16:13:18.489"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.489" endtime="20220607 16:13:18.493"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.456" endtime="20220607 16:13:18.493"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.522" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.493" endtime="20220607 16:13:18.522"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.522" endtime="20220607 16:13:18.522"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.493" endtime="20220607 16:13:18.522"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.546" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:18.522" endtime="20220607 16:13:18.546"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.546" endtime="20220607 16:13:18.546"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.522" endtime="20220607 16:13:18.546"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.583" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.554" endtime="20220607 16:13:18.583"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.583" endtime="20220607 16:13:18.583"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.546" endtime="20220607 16:13:18.583"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:18.420" endtime="20220607 16:13:18.583"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:18.583" endtime="20220607 16:13:18.583"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.420" endtime="20220607 16:13:18.583"/>
+</iter>
+<iter>
+<var name="${row_counter}">9</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:18.583" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:18.583" endtime="20220607 16:13:18.583"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.620" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.591" endtime="20220607 16:13:18.620"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.620" endtime="20220607 16:13:18.620"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.591" endtime="20220607 16:13:18.620"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.651" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:18.620" endtime="20220607 16:13:18.651"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.651" endtime="20220607 16:13:18.651"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.620" endtime="20220607 16:13:18.651"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.678" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.651" endtime="20220607 16:13:18.678"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.678" endtime="20220607 16:13:18.678"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.651" endtime="20220607 16:13:18.678"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.711" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:18.678" endtime="20220607 16:13:18.711"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.711" endtime="20220607 16:13:18.719"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.678" endtime="20220607 16:13:18.719"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.743" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.719" endtime="20220607 16:13:18.743"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.751" endtime="20220607 16:13:18.751"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.719" endtime="20220607 16:13:18.751"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:18.583" endtime="20220607 16:13:18.751"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:18.751" endtime="20220607 16:13:18.754"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.583" endtime="20220607 16:13:18.754"/>
+</iter>
+<iter>
+<var name="${row_counter}">10</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:18.754" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:18.754" endtime="20220607 16:13:18.754"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.787" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.759" endtime="20220607 16:13:18.787"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.787" endtime="20220607 16:13:18.787"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.754" endtime="20220607 16:13:18.787"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.822" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:18.787" endtime="20220607 16:13:18.822"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.822" endtime="20220607 16:13:18.822"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.787" endtime="20220607 16:13:18.822"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.855" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.822" endtime="20220607 16:13:18.855"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.855" endtime="20220607 16:13:18.855"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.822" endtime="20220607 16:13:18.855"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.881" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:18.855" endtime="20220607 16:13:18.889"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.889" endtime="20220607 16:13:18.889"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.855" endtime="20220607 16:13:18.889"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.919" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.892" endtime="20220607 16:13:18.919"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.919" endtime="20220607 16:13:18.919"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.892" endtime="20220607 16:13:18.919"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:18.754" endtime="20220607 16:13:18.919"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:18.919" endtime="20220607 16:13:18.927"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.754" endtime="20220607 16:13:18.927"/>
+</iter>
+<iter>
+<var name="${row_counter}">11</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:18.927" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:18.927" endtime="20220607 16:13:18.927"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.959" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.927" endtime="20220607 16:13:18.959"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.959" endtime="20220607 16:13:18.959"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.927" endtime="20220607 16:13:18.967"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:18.997" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:18.967" endtime="20220607 16:13:18.997"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:18.997" endtime="20220607 16:13:18.997"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.967" endtime="20220607 16:13:18.997"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.032" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:18.997" endtime="20220607 16:13:19.032"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.032" endtime="20220607 16:13:19.032"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.997" endtime="20220607 16:13:19.032"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.065" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:19.032" endtime="20220607 16:13:19.065"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.065" endtime="20220607 16:13:19.065"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.032" endtime="20220607 16:13:19.065"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.097" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:19.065" endtime="20220607 16:13:19.097"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.097" endtime="20220607 16:13:19.097"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.065" endtime="20220607 16:13:19.097"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:18.927" endtime="20220607 16:13:19.097"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:19.097" endtime="20220607 16:13:19.097"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:18.927" endtime="20220607 16:13:19.097"/>
+</iter>
+<iter>
+<var name="${row_counter}">12</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:19.106" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:19.106" endtime="20220607 16:13:19.106"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.139" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:19.108" endtime="20220607 16:13:19.139"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.139" endtime="20220607 16:13:19.139"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.108" endtime="20220607 16:13:19.139"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.179" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:19.147" endtime="20220607 16:13:19.179"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.179" endtime="20220607 16:13:19.179"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.147" endtime="20220607 16:13:19.179"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.220" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:19.179" endtime="20220607 16:13:19.220"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.223" endtime="20220607 16:13:19.223"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.179" endtime="20220607 16:13:19.223"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.260" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:19.223" endtime="20220607 16:13:19.260"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.262" endtime="20220607 16:13:19.262"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.223" endtime="20220607 16:13:19.262"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.302" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:19.262" endtime="20220607 16:13:19.302"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.302" endtime="20220607 16:13:19.302"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.262" endtime="20220607 16:13:19.310"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:19.106" endtime="20220607 16:13:19.310"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:19.310" endtime="20220607 16:13:19.310"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.097" endtime="20220607 16:13:19.310"/>
+</iter>
+<iter>
+<var name="${row_counter}">13</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:19.310" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:19.310" endtime="20220607 16:13:19.310"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.360" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:19.318" endtime="20220607 16:13:19.360"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.360" endtime="20220607 16:13:19.360"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.310" endtime="20220607 16:13:19.360"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.388" level="INFO">${data} = Suresh Kumar</msg>
+<status status="PASS" starttime="20220607 16:13:19.360" endtime="20220607 16:13:19.396"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.396" endtime="20220607 16:13:19.396"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.360" endtime="20220607 16:13:19.396"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.429" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:19.396" endtime="20220607 16:13:19.429"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.429" endtime="20220607 16:13:19.429"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.396" endtime="20220607 16:13:19.429"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.466" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:19.429" endtime="20220607 16:13:19.466"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.466" endtime="20220607 16:13:19.466"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.429" endtime="20220607 16:13:19.466"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.497" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:19.466" endtime="20220607 16:13:19.497"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.497" endtime="20220607 16:13:19.497"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.466" endtime="20220607 16:13:19.497"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:19.310" endtime="20220607 16:13:19.497"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:19.497" endtime="20220607 16:13:19.497"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.310" endtime="20220607 16:13:19.497"/>
+</iter>
+<iter>
+<var name="${row_counter}">14</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:19.497" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:19.497" endtime="20220607 16:13:19.497"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.538" level="INFO">${data} = Software Engineer</msg>
+<status status="PASS" starttime="20220607 16:13:19.505" endtime="20220607 16:13:19.538"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.538" endtime="20220607 16:13:19.538"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.505" endtime="20220607 16:13:19.538"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.570" level="INFO">${data} = ram mohan</msg>
+<status status="PASS" starttime="20220607 16:13:19.538" endtime="20220607 16:13:19.570"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.570" endtime="20220607 16:13:19.570"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.538" endtime="20220607 16:13:19.570"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.605" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:19.570" endtime="20220607 16:13:19.605"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.605" endtime="20220607 16:13:19.605"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.570" endtime="20220607 16:13:19.605"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.636" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:19.605" endtime="20220607 16:13:19.636"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.636" endtime="20220607 16:13:19.636"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.605" endtime="20220607 16:13:19.636"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.668" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:19.636" endtime="20220607 16:13:19.668"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.668" endtime="20220607 16:13:19.668"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.636" endtime="20220607 16:13:19.668"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:19.497" endtime="20220607 16:13:19.668"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:19.668" endtime="20220607 16:13:19.668"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.497" endtime="20220607 16:13:19.668"/>
+</iter>
+<iter>
+<var name="${row_counter}">15</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:19.668" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:19.668" endtime="20220607 16:13:19.668"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.700" level="INFO">${data} = Software Engineer</msg>
+<status status="PASS" starttime="20220607 16:13:19.676" endtime="20220607 16:13:19.700"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.708" endtime="20220607 16:13:19.708"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.676" endtime="20220607 16:13:19.708"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.732" level="INFO">${data} = ram1 mohan1</msg>
+<status status="PASS" starttime="20220607 16:13:19.710" endtime="20220607 16:13:19.732"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.741" endtime="20220607 16:13:19.741"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.708" endtime="20220607 16:13:19.741"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.773" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:19.741" endtime="20220607 16:13:19.773"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.773" endtime="20220607 16:13:19.773"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.741" endtime="20220607 16:13:19.773"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.806" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:19.773" endtime="20220607 16:13:19.806"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.806" endtime="20220607 16:13:19.806"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.773" endtime="20220607 16:13:19.806"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.839" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:19.806" endtime="20220607 16:13:19.839"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.839" endtime="20220607 16:13:19.839"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.806" endtime="20220607 16:13:19.839"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:19.668" endtime="20220607 16:13:19.839"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:19.839" endtime="20220607 16:13:19.839"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.668" endtime="20220607 16:13:19.839"/>
+</iter>
+<iter>
+<var name="${row_counter}">16</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:19.847" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:19.846" endtime="20220607 16:13:19.847"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.882" level="INFO">${data} = Senior QA Lead</msg>
+<status status="PASS" starttime="20220607 16:13:19.847" endtime="20220607 16:13:19.882"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.890" endtime="20220607 16:13:19.890"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.847" endtime="20220607 16:13:19.890"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.924" level="INFO">${data} = subramanyachari siddi</msg>
+<status status="PASS" starttime="20220607 16:13:19.890" endtime="20220607 16:13:19.924"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.924" endtime="20220607 16:13:19.924"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.890" endtime="20220607 16:13:19.924"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.954" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:19.924" endtime="20220607 16:13:19.954"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.954" endtime="20220607 16:13:19.954"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.924" endtime="20220607 16:13:19.954"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:19.981" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:19.954" endtime="20220607 16:13:19.981"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:19.981" endtime="20220607 16:13:19.989"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.954" endtime="20220607 16:13:19.989"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.020" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:19.989" endtime="20220607 16:13:20.020"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.024" endtime="20220607 16:13:20.024"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.989" endtime="20220607 16:13:20.024"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:19.847" endtime="20220607 16:13:20.024"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:20.024" endtime="20220607 16:13:20.024"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:19.846" endtime="20220607 16:13:20.024"/>
+</iter>
+<iter>
+<var name="${row_counter}">17</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:20.030" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:20.024" endtime="20220607 16:13:20.030"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.057" level="INFO">${data} = Software Engineer</msg>
+<status status="PASS" starttime="20220607 16:13:20.032" endtime="20220607 16:13:20.057"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.057" endtime="20220607 16:13:20.057"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.032" endtime="20220607 16:13:20.057"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.093" level="INFO">${data} = John Smith Valley</msg>
+<status status="PASS" starttime="20220607 16:13:20.067" endtime="20220607 16:13:20.093"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.093" endtime="20220607 16:13:20.093"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.067" endtime="20220607 16:13:20.093"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.126" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:20.093" endtime="20220607 16:13:20.126"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.126" endtime="20220607 16:13:20.126"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.093" endtime="20220607 16:13:20.126"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.158" level="INFO">${data} = 2022-06-07</msg>
+<status status="PASS" starttime="20220607 16:13:20.126" endtime="20220607 16:13:20.158"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.158" endtime="20220607 16:13:20.158"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.126" endtime="20220607 16:13:20.158"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.190" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:20.158" endtime="20220607 16:13:20.190"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.190" endtime="20220607 16:13:20.190"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.158" endtime="20220607 16:13:20.190"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:20.030" endtime="20220607 16:13:20.196"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:20.196" endtime="20220607 16:13:20.196"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.024" endtime="20220607 16:13:20.196"/>
+</iter>
+<iter>
+<var name="${row_counter}">18</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:20.196" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:20.196" endtime="20220607 16:13:20.196"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.231" level="INFO">${data} = Associate IT Manager</msg>
+<status status="PASS" starttime="20220607 16:13:20.200" endtime="20220607 16:13:20.231"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.231" endtime="20220607 16:13:20.231"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.200" endtime="20220607 16:13:20.231"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.269" level="INFO">${data} = Archie Augustine</msg>
+<status status="PASS" starttime="20220607 16:13:20.231" endtime="20220607 16:13:20.269"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.269" endtime="20220607 16:13:20.269"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.231" endtime="20220607 16:13:20.272"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.312" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:20.272" endtime="20220607 16:13:20.312"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.312" endtime="20220607 16:13:20.314"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.272" endtime="20220607 16:13:20.314"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.350" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:20.314" endtime="20220607 16:13:20.350"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.350" endtime="20220607 16:13:20.350"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.314" endtime="20220607 16:13:20.350"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.390" level="INFO">${data} = Shortlisted</msg>
+<status status="PASS" starttime="20220607 16:13:20.350" endtime="20220607 16:13:20.390"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.390" endtime="20220607 16:13:20.390"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.350" endtime="20220607 16:13:20.390"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:20.196" endtime="20220607 16:13:20.390"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:20.390" endtime="20220607 16:13:20.398"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.196" endtime="20220607 16:13:20.398"/>
+</iter>
+<iter>
+<var name="${row_counter}">19</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:20.398" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:20.398" endtime="20220607 16:13:20.398"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.437" level="INFO">${data} = Software Engineer</msg>
+<status status="PASS" starttime="20220607 16:13:20.398" endtime="20220607 16:13:20.437"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.437" endtime="20220607 16:13:20.437"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.398" endtime="20220607 16:13:20.437"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.478" level="INFO">${data} = Jennifer Clinton</msg>
+<status status="PASS" starttime="20220607 16:13:20.437" endtime="20220607 16:13:20.478"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.478" endtime="20220607 16:13:20.478"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.437" endtime="20220607 16:13:20.478"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.520" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:20.486" endtime="20220607 16:13:20.520"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.529" endtime="20220607 16:13:20.529"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.486" endtime="20220607 16:13:20.529"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.569" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:20.529" endtime="20220607 16:13:20.569"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.569" endtime="20220607 16:13:20.569"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.529" endtime="20220607 16:13:20.569"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.612" level="INFO">${data} = Rejected</msg>
+<status status="PASS" starttime="20220607 16:13:20.569" endtime="20220607 16:13:20.612"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.612" endtime="20220607 16:13:20.612"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.569" endtime="20220607 16:13:20.612"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:20.398" endtime="20220607 16:13:20.612"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:20.612" endtime="20220607 16:13:20.620"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.398" endtime="20220607 16:13:20.620"/>
+</iter>
+<iter>
+<var name="${row_counter}">20</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:20.620" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:20.620" endtime="20220607 16:13:20.620"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.660" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:20.620" endtime="20220607 16:13:20.660"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.660" endtime="20220607 16:13:20.660"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.620" endtime="20220607 16:13:20.660"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.699" level="INFO">${data} = Jo Denton</msg>
+<status status="PASS" starttime="20220607 16:13:20.660" endtime="20220607 16:13:20.699"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.699" endtime="20220607 16:13:20.699"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.660" endtime="20220607 16:13:20.699"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.732" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:20.699" endtime="20220607 16:13:20.732"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.732" endtime="20220607 16:13:20.732"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.699" endtime="20220607 16:13:20.732"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.776" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:20.743" endtime="20220607 16:13:20.776"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.776" endtime="20220607 16:13:20.776"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.743" endtime="20220607 16:13:20.776"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.812" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:20.776" endtime="20220607 16:13:20.812"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.812" endtime="20220607 16:13:20.812"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.776" endtime="20220607 16:13:20.812"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:20.620" endtime="20220607 16:13:20.812"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:20.812" endtime="20220607 16:13:20.812"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.620" endtime="20220607 16:13:20.812"/>
+</iter>
+<iter>
+<var name="${row_counter}">21</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:20.812" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:20.812" endtime="20220607 16:13:20.812"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.850" level="INFO">${data} = Junior Account Assistant</msg>
+<status status="PASS" starttime="20220607 16:13:20.821" endtime="20220607 16:13:20.850"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.850" endtime="20220607 16:13:20.850"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.820" endtime="20220607 16:13:20.850"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.885" level="INFO">${data} = Matilda Fleenor</msg>
+<status status="PASS" starttime="20220607 16:13:20.850" endtime="20220607 16:13:20.885"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.885" endtime="20220607 16:13:20.885"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.850" endtime="20220607 16:13:20.885"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.928" level="INFO">${data} = Kevin Mathews</msg>
+<status status="PASS" starttime="20220607 16:13:20.885" endtime="20220607 16:13:20.929"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.929" endtime="20220607 16:13:20.929"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.885" endtime="20220607 16:13:20.929"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:20.964" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:20.931" endtime="20220607 16:13:20.964"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:20.964" endtime="20220607 16:13:20.964"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.931" endtime="20220607 16:13:20.964"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.011" level="INFO">${data} = Shortlisted</msg>
+<status status="PASS" starttime="20220607 16:13:20.970" endtime="20220607 16:13:21.011"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.013" endtime="20220607 16:13:21.013"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.970" endtime="20220607 16:13:21.013"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:20.812" endtime="20220607 16:13:21.013"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:21.013" endtime="20220607 16:13:21.013"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:20.812" endtime="20220607 16:13:21.013"/>
+</iter>
+<iter>
+<var name="${row_counter}">22</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:21.013" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:21.013" endtime="20220607 16:13:21.013"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.059" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:21.022" endtime="20220607 16:13:21.059"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.059" endtime="20220607 16:13:21.059"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.021" endtime="20220607 16:13:21.059"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.091" level="INFO">${data} = Charles Haywire</msg>
+<status status="PASS" starttime="20220607 16:13:21.059" endtime="20220607 16:13:21.091"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.099" endtime="20220607 16:13:21.099"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.059" endtime="20220607 16:13:21.099"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.131" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:21.099" endtime="20220607 16:13:21.131"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.131" endtime="20220607 16:13:21.131"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.099" endtime="20220607 16:13:21.131"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.171" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:21.139" endtime="20220607 16:13:21.171"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.171" endtime="20220607 16:13:21.171"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.131" endtime="20220607 16:13:21.171"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.203" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:21.171" endtime="20220607 16:13:21.203"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.203" endtime="20220607 16:13:21.203"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.171" endtime="20220607 16:13:21.203"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:21.013" endtime="20220607 16:13:21.203"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:21.203" endtime="20220607 16:13:21.203"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.013" endtime="20220607 16:13:21.203"/>
+</iter>
+<iter>
+<var name="${row_counter}">23</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:21.209" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:21.209" endtime="20220607 16:13:21.209"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.245" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:21.213" endtime="20220607 16:13:21.245"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.245" endtime="20220607 16:13:21.250"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.213" endtime="20220607 16:13:21.250"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.283" level="INFO">${data} = Richard Holmes</msg>
+<status status="PASS" starttime="20220607 16:13:21.250" endtime="20220607 16:13:21.283"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.283" endtime="20220607 16:13:21.283"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.250" endtime="20220607 16:13:21.283"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.319" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:21.283" endtime="20220607 16:13:21.319"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.319" endtime="20220607 16:13:21.319"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.283" endtime="20220607 16:13:21.319"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.360" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:21.319" endtime="20220607 16:13:21.360"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.360" endtime="20220607 16:13:21.360"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.319" endtime="20220607 16:13:21.360"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.404" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:21.360" endtime="20220607 16:13:21.404"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.404" endtime="20220607 16:13:21.404"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.360" endtime="20220607 16:13:21.404"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:21.209" endtime="20220607 16:13:21.404"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:21.404" endtime="20220607 16:13:21.404"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.209" endtime="20220607 16:13:21.404"/>
+</iter>
+<iter>
+<var name="${row_counter}">24</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:21.409" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:21.409" endtime="20220607 16:13:21.409"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.443" level="INFO">${data} = Software Engineer</msg>
+<status status="PASS" starttime="20220607 16:13:21.414" endtime="20220607 16:13:21.451"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.451" endtime="20220607 16:13:21.451"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.409" endtime="20220607 16:13:21.451"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.487" level="INFO">${data} = Phil Hughes</msg>
+<status status="PASS" starttime="20220607 16:13:21.451" endtime="20220607 16:13:21.487"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.487" endtime="20220607 16:13:21.487"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.451" endtime="20220607 16:13:21.492"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.526" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:21.492" endtime="20220607 16:13:21.526"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.526" endtime="20220607 16:13:21.526"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.492" endtime="20220607 16:13:21.526"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.570" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:21.526" endtime="20220607 16:13:21.570"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.570" endtime="20220607 16:13:21.570"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.526" endtime="20220607 16:13:21.570"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.607" level="INFO">${data} = Shortlisted</msg>
+<status status="PASS" starttime="20220607 16:13:21.570" endtime="20220607 16:13:21.607"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.607" endtime="20220607 16:13:21.607"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.570" endtime="20220607 16:13:21.607"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:21.409" endtime="20220607 16:13:21.607"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:21.607" endtime="20220607 16:13:21.615"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.409" endtime="20220607 16:13:21.615"/>
+</iter>
+<iter>
+<var name="${row_counter}">25</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:21.615" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:21.615" endtime="20220607 16:13:21.615"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.647" level="INFO">${data} = Software Engineer</msg>
+<status status="PASS" starttime="20220607 16:13:21.615" endtime="20220607 16:13:21.647"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.655" endtime="20220607 16:13:21.655"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.615" endtime="20220607 16:13:21.655"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.687" level="INFO">${data} = Andrew Keller</msg>
+<status status="PASS" starttime="20220607 16:13:21.655" endtime="20220607 16:13:21.687"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.687" endtime="20220607 16:13:21.687"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.655" endtime="20220607 16:13:21.687"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.715" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:21.687" endtime="20220607 16:13:21.715"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.715" endtime="20220607 16:13:21.723"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.687" endtime="20220607 16:13:21.723"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.755" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:21.723" endtime="20220607 16:13:21.755"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.755" endtime="20220607 16:13:21.762"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.723" endtime="20220607 16:13:21.762"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.805" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:21.763" endtime="20220607 16:13:21.805"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.805" endtime="20220607 16:13:21.805"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.763" endtime="20220607 16:13:21.805"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:21.615" endtime="20220607 16:13:21.805"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:21.805" endtime="20220607 16:13:21.805"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.615" endtime="20220607 16:13:21.805"/>
+</iter>
+<iter>
+<var name="${row_counter}">26</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:21.805" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:21.805" endtime="20220607 16:13:21.805"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.854" level="INFO">${data} = Associate IT Manager</msg>
+<status status="PASS" starttime="20220607 16:13:21.814" endtime="20220607 16:13:21.854"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.854" endtime="20220607 16:13:21.854"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.814" endtime="20220607 16:13:21.854"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.891" level="INFO">${data} = Joshua Malfoy</msg>
+<status status="PASS" starttime="20220607 16:13:21.854" endtime="20220607 16:13:21.891"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.891" endtime="20220607 16:13:21.891"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.854" endtime="20220607 16:13:21.891"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.926" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:21.891" endtime="20220607 16:13:21.926"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.926" endtime="20220607 16:13:21.926"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.891" endtime="20220607 16:13:21.926"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:21.969" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:21.934" endtime="20220607 16:13:21.969"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:21.969" endtime="20220607 16:13:21.969"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.926" endtime="20220607 16:13:21.969"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.006" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:21.969" endtime="20220607 16:13:22.006"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.006" endtime="20220607 16:13:22.006"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.969" endtime="20220607 16:13:22.006"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:21.805" endtime="20220607 16:13:22.006"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:22.006" endtime="20220607 16:13:22.006"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:21.805" endtime="20220607 16:13:22.006"/>
+</iter>
+<iter>
+<var name="${row_counter}">27</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:22.012" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:22.012" endtime="20220607 16:13:22.012"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.049" level="INFO">${data} = Payroll Administrator</msg>
+<status status="PASS" starttime="20220607 16:13:22.016" endtime="20220607 16:13:22.049"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.049" endtime="20220607 16:13:22.049"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.016" endtime="20220607 16:13:22.049"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.083" level="INFO">${data} = Muhammed Nabeel</msg>
+<status status="PASS" starttime="20220607 16:13:22.049" endtime="20220607 16:13:22.083"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.083" endtime="20220607 16:13:22.083"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.049" endtime="20220607 16:13:22.083"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.118" level="INFO">${data} = Aniket Mahajan</msg>
+<status status="PASS" starttime="20220607 16:13:22.083" endtime="20220607 16:13:22.118"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.118" endtime="20220607 16:13:22.118"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.083" endtime="20220607 16:13:22.121"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.152" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:22.121" endtime="20220607 16:13:22.152"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.152" endtime="20220607 16:13:22.152"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.121" endtime="20220607 16:13:22.152"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.183" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:22.152" endtime="20220607 16:13:22.183"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.183" endtime="20220607 16:13:22.190"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.152" endtime="20220607 16:13:22.190"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:22.012" endtime="20220607 16:13:22.190"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:22.190" endtime="20220607 16:13:22.190"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.006" endtime="20220607 16:13:22.193"/>
+</iter>
+<iter>
+<var name="${row_counter}">28</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:22.193" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:22.193" endtime="20220607 16:13:22.193"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.224" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:22.197" endtime="20220607 16:13:22.224"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.224" endtime="20220607 16:13:22.232"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.197" endtime="20220607 16:13:22.232"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.265" level="INFO">${data} = Daniel Nolan</msg>
+<status status="PASS" starttime="20220607 16:13:22.232" endtime="20220607 16:13:22.265"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.265" endtime="20220607 16:13:22.265"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.232" endtime="20220607 16:13:22.265"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.302" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:22.265" endtime="20220607 16:13:22.302"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.302" endtime="20220607 16:13:22.302"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.265" endtime="20220607 16:13:22.302"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.333" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:22.306" endtime="20220607 16:13:22.333"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.333" endtime="20220607 16:13:22.333"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.306" endtime="20220607 16:13:22.341"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.370" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:22.341" endtime="20220607 16:13:22.370"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.370" endtime="20220607 16:13:22.370"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.341" endtime="20220607 16:13:22.370"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:22.193" endtime="20220607 16:13:22.370"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:22.370" endtime="20220607 16:13:22.370"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.193" endtime="20220607 16:13:22.370"/>
+</iter>
+<iter>
+<var name="${row_counter}">29</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:22.378" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:22.370" endtime="20220607 16:13:22.378"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.410" level="INFO">${data} = Senior QA Lead</msg>
+<status status="PASS" starttime="20220607 16:13:22.378" endtime="20220607 16:13:22.410"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.410" endtime="20220607 16:13:22.410"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.378" endtime="20220607 16:13:22.410"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.441" level="INFO">${data} = Joe Root</msg>
+<status status="PASS" starttime="20220607 16:13:22.410" endtime="20220607 16:13:22.441"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.441" endtime="20220607 16:13:22.449"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.410" endtime="20220607 16:13:22.449"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.476" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:22.449" endtime="20220607 16:13:22.476"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.476" endtime="20220607 16:13:22.484"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.449" endtime="20220607 16:13:22.484"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.523" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:22.484" endtime="20220607 16:13:22.523"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.523" endtime="20220607 16:13:22.523"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.484" endtime="20220607 16:13:22.523"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.563" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:22.523" endtime="20220607 16:13:22.563"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.563" endtime="20220607 16:13:22.563"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.523" endtime="20220607 16:13:22.563"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:22.378" endtime="20220607 16:13:22.563"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:22.563" endtime="20220607 16:13:22.563"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.370" endtime="20220607 16:13:22.563"/>
+</iter>
+<iter>
+<var name="${row_counter}">30</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:22.571" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:22.571" endtime="20220607 16:13:22.571"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.610" level="INFO">${data} = Associate IT Manager</msg>
+<status status="PASS" starttime="20220607 16:13:22.571" endtime="20220607 16:13:22.610"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.610" endtime="20220607 16:13:22.610"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.571" endtime="20220607 16:13:22.610"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.649" level="INFO">${data} = Elizabeth Scott</msg>
+<status status="PASS" starttime="20220607 16:13:22.616" endtime="20220607 16:13:22.649"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.649" endtime="20220607 16:13:22.649"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.616" endtime="20220607 16:13:22.657"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.691" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:22.657" endtime="20220607 16:13:22.691"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.691" endtime="20220607 16:13:22.695"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.657" endtime="20220607 16:13:22.695"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.728" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:22.695" endtime="20220607 16:13:22.728"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.730" endtime="20220607 16:13:22.730"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.695" endtime="20220607 16:13:22.730"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.758" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:22.730" endtime="20220607 16:13:22.758"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.758" endtime="20220607 16:13:22.758"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.730" endtime="20220607 16:13:22.758"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:22.571" endtime="20220607 16:13:22.758"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:22.758" endtime="20220607 16:13:22.768"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.571" endtime="20220607 16:13:22.768"/>
+</iter>
+<iter>
+<var name="${row_counter}">31</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:22.768" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:22.768" endtime="20220607 16:13:22.768"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.803" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:22.768" endtime="20220607 16:13:22.803"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.803" endtime="20220607 16:13:22.803"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.768" endtime="20220607 16:13:22.803"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.835" level="INFO">${data} = John Smith</msg>
+<status status="PASS" starttime="20220607 16:13:22.803" endtime="20220607 16:13:22.835"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.835" endtime="20220607 16:13:22.835"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.803" endtime="20220607 16:13:22.835"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.881" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:22.843" endtime="20220607 16:13:22.881"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.881" endtime="20220607 16:13:22.881"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.835" endtime="20220607 16:13:22.881"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.919" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:22.881" endtime="20220607 16:13:22.919"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.925" endtime="20220607 16:13:22.925"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.881" endtime="20220607 16:13:22.925"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:22.957" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:22.925" endtime="20220607 16:13:22.957"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:22.957" endtime="20220607 16:13:22.957"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.925" endtime="20220607 16:13:22.957"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:22.768" endtime="20220607 16:13:22.957"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:22.957" endtime="20220607 16:13:22.957"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.768" endtime="20220607 16:13:22.957"/>
+</iter>
+<iter>
+<var name="${row_counter}">32</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:22.965" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:22.965" endtime="20220607 16:13:22.965"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.000" level="INFO">${data} = Senior QA Lead</msg>
+<status status="PASS" starttime="20220607 16:13:22.965" endtime="20220607 16:13:23.000"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.000" endtime="20220607 16:13:23.000"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.965" endtime="20220607 16:13:23.000"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.029" level="INFO">${data} = Peter Smith</msg>
+<status status="PASS" starttime="20220607 16:13:23.000" endtime="20220607 16:13:23.029"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.029" endtime="20220607 16:13:23.029"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.000" endtime="20220607 16:13:23.038"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.075" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:23.038" endtime="20220607 16:13:23.075"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.075" endtime="20220607 16:13:23.075"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.038" endtime="20220607 16:13:23.075"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.119" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:23.075" endtime="20220607 16:13:23.119"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.119" endtime="20220607 16:13:23.122"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.075" endtime="20220607 16:13:23.122"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.163" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:23.122" endtime="20220607 16:13:23.163"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.163" endtime="20220607 16:13:23.163"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.122" endtime="20220607 16:13:23.163"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:22.965" endtime="20220607 16:13:23.163"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:23.167" endtime="20220607 16:13:23.167"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:22.957" endtime="20220607 16:13:23.167"/>
+</iter>
+<iter>
+<var name="${row_counter}">33</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:23.167" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:23.167" endtime="20220607 16:13:23.167"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.211" level="INFO">${data} = Senior QA Lead</msg>
+<status status="PASS" starttime="20220607 16:13:23.167" endtime="20220607 16:13:23.211"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.211" endtime="20220607 16:13:23.211"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.167" endtime="20220607 16:13:23.211"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.243" level="INFO">${data} = Martine Tennat</msg>
+<status status="PASS" starttime="20220607 16:13:23.211" endtime="20220607 16:13:23.243"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.243" endtime="20220607 16:13:23.251"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.211" endtime="20220607 16:13:23.251"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.287" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:23.251" endtime="20220607 16:13:23.287"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.287" endtime="20220607 16:13:23.287"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.251" endtime="20220607 16:13:23.287"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.321" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:23.292" endtime="20220607 16:13:23.321"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.321" endtime="20220607 16:13:23.321"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.291" endtime="20220607 16:13:23.321"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.353" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:23.321" endtime="20220607 16:13:23.353"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.353" endtime="20220607 16:13:23.353"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.321" endtime="20220607 16:13:23.353"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:23.167" endtime="20220607 16:13:23.353"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:23.353" endtime="20220607 16:13:23.361"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.167" endtime="20220607 16:13:23.361"/>
+</iter>
+<iter>
+<var name="${row_counter}">34</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:23.361" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:23.361" endtime="20220607 16:13:23.361"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.402" level="INFO">${data} = Senior QA Lead</msg>
+<status status="PASS" starttime="20220607 16:13:23.361" endtime="20220607 16:13:23.402"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.402" endtime="20220607 16:13:23.402"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.361" endtime="20220607 16:13:23.402"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.438" level="INFO">${data} = Garry White</msg>
+<status status="PASS" starttime="20220607 16:13:23.402" endtime="20220607 16:13:23.438"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.438" endtime="20220607 16:13:23.438"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.402" endtime="20220607 16:13:23.438"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.475" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:23.438" endtime="20220607 16:13:23.475"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.475" endtime="20220607 16:13:23.475"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.438" endtime="20220607 16:13:23.475"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.507" level="INFO">${data} = 2020-10-08</msg>
+<status status="PASS" starttime="20220607 16:13:23.475" endtime="20220607 16:13:23.507"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.515" endtime="20220607 16:13:23.515"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.475" endtime="20220607 16:13:23.515"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.551" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:23.515" endtime="20220607 16:13:23.551"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.551" endtime="20220607 16:13:23.559"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.515" endtime="20220607 16:13:23.559"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:23.361" endtime="20220607 16:13:23.559"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:23.559" endtime="20220607 16:13:23.559"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.361" endtime="20220607 16:13:23.559"/>
+</iter>
+<iter>
+<var name="${row_counter}">35</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:23.567" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:23.567" endtime="20220607 16:13:23.567"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.610" level="INFO">${data} = Associate IT Manager</msg>
+<status status="PASS" starttime="20220607 16:13:23.567" endtime="20220607 16:13:23.610"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.610" endtime="20220607 16:13:23.610"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.567" endtime="20220607 16:13:23.610"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.649" level="INFO">${data} = Mason Jenson</msg>
+<status status="PASS" starttime="20220607 16:13:23.616" endtime="20220607 16:13:23.649"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.649" endtime="20220607 16:13:23.649"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.616" endtime="20220607 16:13:23.649"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.685" level="INFO">${data} = Odis Adalwin</msg>
+<status status="PASS" starttime="20220607 16:13:23.649" endtime="20220607 16:13:23.685"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.685" endtime="20220607 16:13:23.689"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.649" endtime="20220607 16:13:23.689"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.732" level="INFO">${data} = 2020-10-07</msg>
+<status status="PASS" starttime="20220607 16:13:23.689" endtime="20220607 16:13:23.732"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.732" endtime="20220607 16:13:23.732"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.689" endtime="20220607 16:13:23.732"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.772" level="INFO">${data} = Application Initiated</msg>
+<status status="PASS" starttime="20220607 16:13:23.736" endtime="20220607 16:13:23.772"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.772" endtime="20220607 16:13:23.772"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.736" endtime="20220607 16:13:23.772"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:23.567" endtime="20220607 16:13:23.772"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:23.772" endtime="20220607 16:13:23.780"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.559" endtime="20220607 16:13:23.780"/>
+</iter>
+<iter>
+<var name="${row_counter}">36</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:23.780" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:23.780" endtime="20220607 16:13:23.780"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.821" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:23.780" endtime="20220607 16:13:23.821"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.821" endtime="20220607 16:13:23.821"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.780" endtime="20220607 16:13:23.821"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.869" level="INFO">${data} = Chris Harris</msg>
+<status status="PASS" starttime="20220607 16:13:23.829" endtime="20220607 16:13:23.869"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.869" endtime="20220607 16:13:23.869"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.821" endtime="20220607 16:13:23.869"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.908" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:23.869" endtime="20220607 16:13:23.908"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.908" endtime="20220607 16:13:23.908"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.869" endtime="20220607 16:13:23.908"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.949" level="INFO">${data} = 2020-10-06</msg>
+<status status="PASS" starttime="20220607 16:13:23.908" endtime="20220607 16:13:23.949"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.949" endtime="20220607 16:13:23.949"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.908" endtime="20220607 16:13:23.949"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:23.989" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:23.949" endtime="20220607 16:13:23.989"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:23.989" endtime="20220607 16:13:23.994"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.949" endtime="20220607 16:13:23.994"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:23.780" endtime="20220607 16:13:23.994"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:23.994" endtime="20220607 16:13:23.994"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.780" endtime="20220607 16:13:23.997"/>
+</iter>
+<iter>
+<var name="${row_counter}">37</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:23.997" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:23.997" endtime="20220607 16:13:23.997"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.036" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:23.997" endtime="20220607 16:13:24.036"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.036" endtime="20220607 16:13:24.036"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.997" endtime="20220607 16:13:24.036"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.074" level="INFO">${data} = Anne Clinton</msg>
+<status status="PASS" starttime="20220607 16:13:24.036" endtime="20220607 16:13:24.074"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.074" endtime="20220607 16:13:24.074"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.036" endtime="20220607 16:13:24.074"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.107" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:24.074" endtime="20220607 16:13:24.107"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.115" endtime="20220607 16:13:24.115"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.074" endtime="20220607 16:13:24.115"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.152" level="INFO">${data} = 2020-10-01</msg>
+<status status="PASS" starttime="20220607 16:13:24.115" endtime="20220607 16:13:24.152"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.152" endtime="20220607 16:13:24.152"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.115" endtime="20220607 16:13:24.152"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.187" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:24.152" endtime="20220607 16:13:24.187"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.187" endtime="20220607 16:13:24.187"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.152" endtime="20220607 16:13:24.187"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:23.997" endtime="20220607 16:13:24.187"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:24.187" endtime="20220607 16:13:24.194"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:23.997" endtime="20220607 16:13:24.194"/>
+</iter>
+<iter>
+<var name="${row_counter}">38</var>
+<kw name="Create List" library="BuiltIn">
+<var>${list_data}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220607 16:13:24.194" level="INFO">${list_data} = []</msg>
+<status status="PASS" starttime="20220607 16:13:24.194" endtime="20220607 16:13:24.194"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${column_counter}</var>
+<value>${2}</value>
+<value>${table_column_count}</value>
+<value>${1}</value>
+<iter>
+<var name="${column_counter}">2</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.233" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:24.194" endtime="20220607 16:13:24.233"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.233" endtime="20220607 16:13:24.233"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.194" endtime="20220607 16:13:24.241"/>
+</iter>
+<iter>
+<var name="${column_counter}">3</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.278" level="INFO">${data} = Gerad Butler</msg>
+<status status="PASS" starttime="20220607 16:13:24.242" endtime="20220607 16:13:24.278"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.278" endtime="20220607 16:13:24.278"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.242" endtime="20220607 16:13:24.278"/>
+</iter>
+<iter>
+<var name="${column_counter}">4</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.319" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:24.278" endtime="20220607 16:13:24.319"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.319" endtime="20220607 16:13:24.319"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.278" endtime="20220607 16:13:24.319"/>
+</iter>
+<iter>
+<var name="${column_counter}">5</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.353" level="INFO">${data} = 2020-09-24</msg>
+<status status="PASS" starttime="20220607 16:13:24.319" endtime="20220607 16:13:24.353"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.355" endtime="20220607 16:13:24.355"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.319" endtime="20220607 16:13:24.355"/>
+</iter>
+<iter>
+<var name="${column_counter}">6</var>
+<kw name="Get Text" library="RPA.Browser">
+<var>${data}</var>
+<arg>//table[@id="resultTable"]//tbody//tr[${row_counter}]//td[${column_counter}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220607 16:13:24.385" level="INFO">${data} = </msg>
+<status status="PASS" starttime="20220607 16:13:24.355" endtime="20220607 16:13:24.385"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${list_data}</arg>
+<arg>${data}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220607 16:13:24.385" endtime="20220607 16:13:24.393"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.355" endtime="20220607 16:13:24.393"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:24.194" endtime="20220607 16:13:24.393"/>
+</for>
+<kw name="Add Table Row" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>${list_data}</arg>
+<doc>Append rows to a table.</doc>
+<status status="PASS" starttime="20220607 16:13:24.393" endtime="20220607 16:13:24.393"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:24.194" endtime="20220607 16:13:24.393"/>
+</iter>
+<status status="PASS" starttime="20220607 16:13:16.999" endtime="20220607 16:13:24.393"/>
+</for>
+<kw name="Write table to CSV" library="RPA.Tables">
+<arg>${table_data}</arg>
+<arg>output/output.csv</arg>
+<arg>overwrite=True</arg>
+<doc>Write a table as a CSV file.</doc>
+<status status="PASS" starttime="20220607 16:13:24.393" endtime="20220607 16:13:24.401"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:01.792" endtime="20220607 16:13:24.401"/>
+</kw>
+<status status="PASS" starttime="20220607 16:13:01.788" endtime="20220607 16:13:24.401"/>
+</test>
+<doc>Template robot main suite.</doc>
+<status status="PASS" starttime="20220607 16:12:20.650" endtime="20220607 16:13:24.404"/>
+</suite>
+<status status="PASS" starttime="20220607 16:12:19.968" endtime="20220607 16:13:24.408"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Sample Rcc Run">Sample Rcc Run</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tasks">Sample Rcc Run.Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220607 16:13:01.324" level="WARN">This is a deprecated import that will be removed in favor of RPA.Browser.Selenium</msg>
+</errors>
+</robot>

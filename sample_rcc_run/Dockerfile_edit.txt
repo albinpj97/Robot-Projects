@@ -1,0 +1,69 @@
+# syntax=docker/dockerfile:1
+
+
+##------------------------##
+# FROM browserless/chrome:latest
+# WORKDIR /robocorp-run
+# USER root
+# COPY . .
+# RUN chmod a+x rcc
+# RUN mv rcc /usr/local/bin/
+# CMD ["rcc","run","-e","devdata/env.json","--task", "Run_Orange_HR_Process"]
+##-----------------------##
+
+
+##-----------------------##
+FROM ubuntu
+WORKDIR /robocorp-run
+RUN apt-get update
+RUN apt-get install -y xvfb 
+RUN apt-get install -y zip 
+RUN apt-get install -y wget 
+RUN apt-get install ca-certificates 
+RUN apt-get update && apt-get clean && apt-get install -y \
+    gnupg2 \
+    x11vnc \
+    xvfb \
+    fluxbox \
+    wmctrl \
+    wget \
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
+    && apt-get update && apt-get -y install google-chrome-stable
+COPY . .
+RUN chmod a+x rcc
+RUN mv rcc /usr/local/bin/
+CMD ["rcc","run","-e","devdata/env.json","--task", "Run_Orange_HR_Process"]
+##-------------------------##
+
+# RUN apt-get install -y libnss3-dev libasound2 libxss1 libappindicator3-1 libindicator7 gconf-service libgconf-2-4 libpango1.0-0 xdg-utils fonts-liberation
+# RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.deb
+# RUN apt install ./google-chrome-stable_current_amd64.deb
+# RUN dpkg -i google-chrome*.deb 
+# RUN rm google-chrome*.deb
+# RUN wget -N http://chromedriver.storage.googleapis.com/100.0.4896.60/chromedriver_linux64.zip
+# http://chromedriver.storage.googleapis.com/100.0.4896.20/chromedriver_linux64.zip
+# RUN unzip chromedriver_linux64.zip
+# RUN chmod +x chromedriver
+# RUN cp chromedriver /usr/local/bin
+# RUN rm chromedriver_linux64.zip
+# RUN apt-get update && apt-get install -y gnupg
+# RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+# RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> \
+# /etc/apt/sources.list.d/google.list'
+# RUN apt-get update
+# RUN apt install -y google-chrome-stable 
+# RUN rm /etc/apt/sources.list.d/google.list
+
+# ENTRYPOINT robot -d run-batch orange_hr_run.bat
+
+# FROM robotframework/rfdocker
+# FROM python:3
+# WORKDIR /robocorp-run
+# MAINTAINER Albin Jose <albin.jose@quadance.com>
+# RUN pip3 install --upgrade pip
+# RUN pip3 install robotframework
+# RUN pip3 install rpaframework
+# COPY . .
+# ENTRYPOINT robot -d main-task main_tasks.robot
