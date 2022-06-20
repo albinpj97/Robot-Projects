@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.7.5 on win32)" generated="20220427 15:48:12.155" rpa="true" schemaversion="2">
+<suite id="s1" name="Tasks" source="C:\robot_run\RPA_Challenge\tasks.robot">
+<test id="s1-t1" name="Minimal task">
+<kw name="Open RPA Challenge DB">
+<kw name="Open Available Browser" library="RPA.Browser">
+<arg>https://rpachallenge.com/</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20220427 15:48:16.470" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220427 15:48:16.523" level="INFO">Created download root directory: C:\Users\Q0040\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20220427 15:48:16.523" level="INFO">Created symlink directory: C:\Users\Q0040\AppData\Local\robocorp\webdrivers</msg>
+<msg timestamp="20220427 15:48:16.523" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220427 15:48:17.872" level="INFO">Created Chrome browser with arguments: --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20220427 15:48:17.872" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20220427 15:48:17.872" level="INFO">Opening url 'https://rpachallenge.com/'</msg>
+<status status="PASS" starttime="20220427 15:48:16.469" endtime="20220427 15:48:22.079"/>
+</kw>
+<kw name="Click Button When Visible" library="RPA.Browser">
+<arg>//button[contains(.,"Start")]</arg>
+<doc>Click button identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20220427 15:48:22.121" level="INFO">Clicking button '//button[contains(.,"Start")]'.</msg>
+<status status="PASS" starttime="20220427 15:48:22.083" endtime="20220427 15:48:22.201"/>
+</kw>
+<kw name="Connect To Database" library="RPA.Database">
+<arg>pymssql</arg>
+<arg>Robocorp_DB</arg>
+<arg>sa</arg>
+<arg>Albin@12345</arg>
+<arg>52.152.134.214</arg>
+<doc>Connect to database using DB API 2.0 module.</doc>
+<msg timestamp="20220427 15:48:22.202" level="INFO">Protecting keyword: RPA.Database.Connect To Database</msg>
+<msg timestamp="20220427 15:48:24.508" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220427 15:48:22.201" endtime="20220427 15:48:24.508"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${starter}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220427 15:48:24.508" level="INFO">${starter} = 1</msg>
+<status status="PASS" starttime="20220427 15:48:24.508" endtime="20220427 15:48:24.508"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<var>${client_count}</var>
+<arg>SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:24.508" level="INFO">Executing query: SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</msg>
+<msg timestamp="20220427 15:48:25.217" level="INFO">${client_count} = Table(columns=[''], rows=1)</msg>
+<status status="PASS" starttime="20220427 15:48:24.508" endtime="20220427 15:48:25.217"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${client_count}</var>
+<arg>${client_count}[0][0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220427 15:48:25.217" level="INFO">${client_count} = 8</msg>
+<status status="PASS" starttime="20220427 15:48:25.217" endtime="20220427 15:48:25.217"/>
+</kw>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${client_count}</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20220427 15:48:25.217" endtime="20220427 15:48:25.233"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>${starter}</value>
+<value>${client_count+1}</value>
+<iter>
+<var name="${i}">1</var>
+<kw name="Get Data And Fill The Form">
+<var>${current_client}</var>
+<var>${error_info}</var>
+<kw name="Get Data From MSSQL DB">
+<var>${row}</var>
+<kw name="Query" library="RPA.Database">
+<var>${orders}</var>
+<arg>Select Top(1) * FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:25.233" level="INFO">Executing query: Select Top(1) * FROM Client_Details Where Logs = 'Pending'</msg>
+<msg timestamp="20220427 15:48:26.028" level="INFO">${orders} = Table(columns=['FirstName', 'LastName', 'CompanyName', 'RoleInCompany', 'Address', 'Email', 'PhoneNumber', 'Logs'], rows=1)</msg>
+<status status="PASS" starttime="20220427 15:48:25.233" endtime="20220427 15:48:26.028"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<arg>UPDATE Client_Details SET Logs = 'InProgress' Where FirstName = '${orders}[0][0]' and LastName = '${orders}[0][1]'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:26.028" level="INFO">Executing query: UPDATE Client_Details SET Logs = 'InProgress' Where FirstName = 'Michael                                           ' and LastName = 'Robertson                                         '</msg>
+<status status="PASS" starttime="20220427 15:48:26.028" endtime="20220427 15:48:26.938"/>
+</kw>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${orders}[0]</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20220427 15:48:26.938" endtime="20220427 15:48:26.939"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${orders}[0]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220427 15:48:26.939" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220427 15:48:26.939" endtime="20220427 15:48:26.941"/>
+</kw>
+<msg timestamp="20220427 15:48:26.942" level="INFO">${row} = ['Michael                                           ', 'Robertson                                         ', 'MediCare                                          ', 'IT Specialist                       ...</msg>
+<status status="PASS" starttime="20220427 15:48:25.233" endtime="20220427 15:48:26.942"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${error_info}</var>
+<var>${error_msg}</var>
+<arg>Fill And Submit The Form DB</arg>
+<arg>${row}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name=" Fill And Submit The Form DB">
+<arg>${row}</arg>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelFirstName"]</arg>
+<arg>${row}[0]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:26.943" level="INFO">Typing text 'Michael                                           ' into text field '//input[@ng-reflect-name="labelFirstName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:26.943" endtime="20220427 15:48:27.172"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelLastName"]</arg>
+<arg>${row}[1]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:27.172" level="INFO">Typing text 'Robertson                                         ' into text field '//input[@ng-reflect-name="labelLastName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:27.172" endtime="20220427 15:48:27.399"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelCompanyName"]</arg>
+<arg>${row}[2]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:27.399" level="INFO">Typing text 'MediCare                                          ' into text field '//input[@ng-reflect-name="labelCompanyName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:27.399" endtime="20220427 15:48:27.655"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelRole"]</arg>
+<arg>${row}[3]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:27.657" level="INFO">Typing text 'IT Specialist                                     ' into text field '//input[@ng-reflect-name="labelRole"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:27.656" endtime="20220427 15:48:27.874"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelAddress"]</arg>
+<arg>${row}[4]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:27.884" level="INFO">Typing text '17 Farburn Terrace                                ' into text field '//input[@ng-reflect-name="labelAddress"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:27.884" endtime="20220427 15:48:28.089"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelEmail"]</arg>
+<arg>${row}[5]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:28.089" level="INFO">Typing text 'mrobertson@mc.com                                 ' into text field '//input[@ng-reflect-name="labelEmail"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:28.089" endtime="20220427 15:48:28.270"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelPhone"]</arg>
+<arg>${row}[6]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:28.270" level="INFO">Typing text '40733652145                                       ' into text field '//input[@ng-reflect-name="labelPhone"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:28.270" endtime="20220427 15:48:28.465"/>
+</kw>
+<kw name="Click Button When Visible" library="RPA.Browser">
+<arg>//input[@value="Submit"]</arg>
+<doc>Click button identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20220427 15:48:28.513" level="INFO">Clicking button '//input[@value="Submit"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:28.465" endtime="20220427 15:48:28.608"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:26.943" endtime="20220427 15:48:28.608"/>
+</kw>
+<msg timestamp="20220427 15:48:28.608" level="INFO">${error_info} = PASS</msg>
+<msg timestamp="20220427 15:48:28.608" level="INFO">${error_msg} = None</msg>
+<status status="PASS" starttime="20220427 15:48:26.943" endtime="20220427 15:48:28.608"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${row}</arg>
+<arg>${error_info}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220427 15:48:28.608" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220427 15:48:28.608" endtime="20220427 15:48:28.608"/>
+</kw>
+<msg timestamp="20220427 15:48:28.608" level="INFO">${current_client} = ['Michael                                           ', 'Robertson                                         ', 'MediCare                                          ', 'IT Specialist                       ...</msg>
+<msg timestamp="20220427 15:48:28.608" level="INFO">${error_info} = PASS</msg>
+<status status="PASS" starttime="20220427 15:48:25.233" endtime="20220427 15:48:28.608"/>
+</kw>
+<if>
+<branch type="IF" condition="'${error_info}' == 'PASS'">
+<kw name="Query" library="RPA.Database">
+<arg>UPDATE Client_Details SET Logs = 'Finished' Where FirstName = '${current_client}[0]' and LastName = '${current_client}[1]'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:28.616" level="INFO">Executing query: UPDATE Client_Details SET Logs = 'Finished' Where FirstName = 'Michael                                           ' and LastName = 'Robertson                                         '</msg>
+<status status="PASS" starttime="20220427 15:48:28.608" endtime="20220427 15:48:29.392"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:28.608" endtime="20220427 15:48:29.392"/>
+</branch>
+<status status="PASS" starttime="20220427 15:48:28.608" endtime="20220427 15:48:29.407"/>
+</if>
+<kw name="Set Variable" library="BuiltIn">
+<var>${starter}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220427 15:48:29.408" level="INFO">${starter} = 1</msg>
+<status status="PASS" starttime="20220427 15:48:29.408" endtime="20220427 15:48:29.408"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<var>${client_count}</var>
+<arg>SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:29.408" level="INFO">Executing query: SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</msg>
+<msg timestamp="20220427 15:48:30.190" level="INFO">${client_count} = Table(columns=[''], rows=1)</msg>
+<status status="PASS" starttime="20220427 15:48:29.408" endtime="20220427 15:48:30.190"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:25.233" endtime="20220427 15:48:30.190"/>
+</iter>
+<iter>
+<var name="${i}">2</var>
+<kw name="Get Data And Fill The Form">
+<var>${current_client}</var>
+<var>${error_info}</var>
+<kw name="Get Data From MSSQL DB">
+<var>${row}</var>
+<kw name="Query" library="RPA.Database">
+<var>${orders}</var>
+<arg>Select Top(1) * FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:30.190" level="INFO">Executing query: Select Top(1) * FROM Client_Details Where Logs = 'Pending'</msg>
+<msg timestamp="20220427 15:48:31.377" level="INFO">${orders} = Table(columns=['FirstName', 'LastName', 'CompanyName', 'RoleInCompany', 'Address', 'Email', 'PhoneNumber', 'Logs'], rows=1)</msg>
+<status status="PASS" starttime="20220427 15:48:30.190" endtime="20220427 15:48:31.377"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<arg>UPDATE Client_Details SET Logs = 'InProgress' Where FirstName = '${orders}[0][0]' and LastName = '${orders}[0][1]'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:31.377" level="INFO">Executing query: UPDATE Client_Details SET Logs = 'InProgress' Where FirstName = 'Jessie                                            ' and LastName = 'Marlowe                                           '</msg>
+<status status="PASS" starttime="20220427 15:48:31.377" endtime="20220427 15:48:32.309"/>
+</kw>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${orders}[0]</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20220427 15:48:32.309" endtime="20220427 15:48:32.309"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${orders}[0]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220427 15:48:32.309" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220427 15:48:32.309" endtime="20220427 15:48:32.309"/>
+</kw>
+<msg timestamp="20220427 15:48:32.309" level="INFO">${row} = ['Jessie                                            ', 'Marlowe                                           ', 'Aperture Inc.                                     ', 'Scientist                           ...</msg>
+<status status="PASS" starttime="20220427 15:48:30.190" endtime="20220427 15:48:32.309"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${error_info}</var>
+<var>${error_msg}</var>
+<arg>Fill And Submit The Form DB</arg>
+<arg>${row}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name=" Fill And Submit The Form DB">
+<arg>${row}</arg>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelFirstName"]</arg>
+<arg>${row}[0]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:32.309" level="INFO">Typing text 'Jessie                                            ' into text field '//input[@ng-reflect-name="labelFirstName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:32.309" endtime="20220427 15:48:32.550"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelLastName"]</arg>
+<arg>${row}[1]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:32.550" level="INFO">Typing text 'Marlowe                                           ' into text field '//input[@ng-reflect-name="labelLastName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:32.550" endtime="20220427 15:48:32.768"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelCompanyName"]</arg>
+<arg>${row}[2]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:32.768" level="INFO">Typing text 'Aperture Inc.                                     ' into text field '//input[@ng-reflect-name="labelCompanyName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:32.768" endtime="20220427 15:48:32.963"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelRole"]</arg>
+<arg>${row}[3]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:32.963" level="INFO">Typing text 'Scientist                                         ' into text field '//input[@ng-reflect-name="labelRole"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:32.963" endtime="20220427 15:48:33.184"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelAddress"]</arg>
+<arg>${row}[4]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:33.192" level="INFO">Typing text '27 Cheshire Street                                ' into text field '//input[@ng-reflect-name="labelAddress"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:33.184" endtime="20220427 15:48:33.396"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelEmail"]</arg>
+<arg>${row}[5]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:33.396" level="INFO">Typing text 'jmarlowe@aperture.us                              ' into text field '//input[@ng-reflect-name="labelEmail"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:33.396" endtime="20220427 15:48:33.619"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelPhone"]</arg>
+<arg>${row}[6]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:33.619" level="INFO">Typing text '40733154268                                       ' into text field '//input[@ng-reflect-name="labelPhone"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:33.619" endtime="20220427 15:48:33.862"/>
+</kw>
+<kw name="Click Button When Visible" library="RPA.Browser">
+<arg>//input[@value="Submit"]</arg>
+<doc>Click button identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20220427 15:48:33.892" level="INFO">Clicking button '//input[@value="Submit"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:33.862" endtime="20220427 15:48:33.974"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:32.309" endtime="20220427 15:48:33.974"/>
+</kw>
+<msg timestamp="20220427 15:48:33.974" level="INFO">${error_info} = PASS</msg>
+<msg timestamp="20220427 15:48:33.974" level="INFO">${error_msg} = None</msg>
+<status status="PASS" starttime="20220427 15:48:32.309" endtime="20220427 15:48:33.974"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${row}</arg>
+<arg>${error_info}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220427 15:48:33.974" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220427 15:48:33.974" endtime="20220427 15:48:33.981"/>
+</kw>
+<msg timestamp="20220427 15:48:33.981" level="INFO">${current_client} = ['Jessie                                            ', 'Marlowe                                           ', 'Aperture Inc.                                     ', 'Scientist                           ...</msg>
+<msg timestamp="20220427 15:48:33.981" level="INFO">${error_info} = PASS</msg>
+<status status="PASS" starttime="20220427 15:48:30.190" endtime="20220427 15:48:33.981"/>
+</kw>
+<if>
+<branch type="IF" condition="'${error_info}' == 'PASS'">
+<kw name="Query" library="RPA.Database">
+<arg>UPDATE Client_Details SET Logs = 'Finished' Where FirstName = '${current_client}[0]' and LastName = '${current_client}[1]'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:33.981" level="INFO">Executing query: UPDATE Client_Details SET Logs = 'Finished' Where FirstName = 'Jessie                                            ' and LastName = 'Marlowe                                           '</msg>
+<status status="PASS" starttime="20220427 15:48:33.981" endtime="20220427 15:48:35.286"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:33.981" endtime="20220427 15:48:35.286"/>
+</branch>
+<status status="PASS" starttime="20220427 15:48:33.981" endtime="20220427 15:48:35.286"/>
+</if>
+<kw name="Set Variable" library="BuiltIn">
+<var>${starter}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220427 15:48:35.286" level="INFO">${starter} = 1</msg>
+<status status="PASS" starttime="20220427 15:48:35.286" endtime="20220427 15:48:35.286"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<var>${client_count}</var>
+<arg>SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:35.286" level="INFO">Executing query: SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</msg>
+<msg timestamp="20220427 15:48:36.246" level="INFO">${client_count} = Table(columns=[''], rows=1)</msg>
+<status status="PASS" starttime="20220427 15:48:35.286" endtime="20220427 15:48:36.246"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:30.190" endtime="20220427 15:48:36.246"/>
+</iter>
+<iter>
+<var name="${i}">3</var>
+<kw name="Get Data And Fill The Form">
+<var>${current_client}</var>
+<var>${error_info}</var>
+<kw name="Get Data From MSSQL DB">
+<var>${row}</var>
+<kw name="Query" library="RPA.Database">
+<var>${orders}</var>
+<arg>Select Top(1) * FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:36.246" level="INFO">Executing query: Select Top(1) * FROM Client_Details Where Logs = 'Pending'</msg>
+<msg timestamp="20220427 15:48:37.182" level="INFO">${orders} = Table(columns=['FirstName', 'LastName', 'CompanyName', 'RoleInCompany', 'Address', 'Email', 'PhoneNumber', 'Logs'], rows=1)</msg>
+<status status="PASS" starttime="20220427 15:48:36.246" endtime="20220427 15:48:37.182"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<arg>UPDATE Client_Details SET Logs = 'InProgress' Where FirstName = '${orders}[0][0]' and LastName = '${orders}[0][1]'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:37.182" level="INFO">Executing query: UPDATE Client_Details SET Logs = 'InProgress' Where FirstName = 'Stacy                                             ' and LastName = 'Shelby                                            '</msg>
+<status status="PASS" starttime="20220427 15:48:37.182" endtime="20220427 15:48:38.136"/>
+</kw>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${orders}[0]</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="PASS" starttime="20220427 15:48:38.136" endtime="20220427 15:48:38.136"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${orders}[0]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220427 15:48:38.136" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220427 15:48:38.136" endtime="20220427 15:48:38.136"/>
+</kw>
+<msg timestamp="20220427 15:48:38.136" level="INFO">${row} = ['Stacy                                             ', 'Shelby                                            ', 'TechDev                                           ', 'HR Manager                          ...</msg>
+<status status="PASS" starttime="20220427 15:48:36.246" endtime="20220427 15:48:38.136"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${error_info}</var>
+<var>${error_msg}</var>
+<arg>Fill And Submit The Form DB</arg>
+<arg>${row}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name=" Fill And Submit The Form DB">
+<arg>${row}</arg>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelFirstName"]</arg>
+<arg>${row}[0]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:38.136" level="INFO">Typing text 'Stacy                                             ' into text field '//input[@ng-reflect-name="labelFirstName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:38.136" endtime="20220427 15:48:38.364"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelLastName"]</arg>
+<arg>${row}[1]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:38.364" level="INFO">Typing text 'Shelby                                            ' into text field '//input[@ng-reflect-name="labelLastName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:38.364" endtime="20220427 15:48:38.613"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelCompanyName"]</arg>
+<arg>${row}[2]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:38.613" level="INFO">Typing text 'TechDev                                           ' into text field '//input[@ng-reflect-name="labelCompanyName"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:38.613" endtime="20220427 15:48:38.821"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelRole"]</arg>
+<arg>${row}[3]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:38.830" level="INFO">Typing text 'HR Manager                                        ' into text field '//input[@ng-reflect-name="labelRole"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:38.821" endtime="20220427 15:48:39.045"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelAddress"]</arg>
+<arg>${row}[4]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:39.045" level="INFO">Typing text '19 Pineapple Boulevard                            ' into text field '//input[@ng-reflect-name="labelAddress"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:39.045" endtime="20220427 15:48:39.259"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelEmail"]</arg>
+<arg>${row}[5]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:39.261" level="INFO">Typing text 'sshelby@techdev.com                               ' into text field '//input[@ng-reflect-name="labelEmail"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:39.259" endtime="20220427 15:48:39.452"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser">
+<arg>//input[@ng-reflect-name="labelPhone"]</arg>
+<arg>${row}[6]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220427 15:48:39.452" level="INFO">Typing text '40741785214                                       ' into text field '//input[@ng-reflect-name="labelPhone"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:39.452" endtime="20220427 15:48:39.657"/>
+</kw>
+<kw name="Click Button When Visible" library="RPA.Browser">
+<arg>//input[@value="Submit"]</arg>
+<doc>Click button identified by ``locator``, once it becomes visible.</doc>
+<msg timestamp="20220427 15:48:39.689" level="INFO">Clicking button '//input[@value="Submit"]'.</msg>
+<status status="PASS" starttime="20220427 15:48:39.657" endtime="20220427 15:48:39.783"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:38.136" endtime="20220427 15:48:39.783"/>
+</kw>
+<msg timestamp="20220427 15:48:39.783" level="INFO">${error_info} = PASS</msg>
+<msg timestamp="20220427 15:48:39.783" level="INFO">${error_msg} = None</msg>
+<status status="PASS" starttime="20220427 15:48:38.136" endtime="20220427 15:48:39.783"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${row}</arg>
+<arg>${error_info}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220427 15:48:39.783" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220427 15:48:39.783" endtime="20220427 15:48:39.783"/>
+</kw>
+<msg timestamp="20220427 15:48:39.791" level="INFO">${current_client} = ['Stacy                                             ', 'Shelby                                            ', 'TechDev                                           ', 'HR Manager                          ...</msg>
+<msg timestamp="20220427 15:48:39.791" level="INFO">${error_info} = PASS</msg>
+<status status="PASS" starttime="20220427 15:48:36.246" endtime="20220427 15:48:39.791"/>
+</kw>
+<if>
+<branch type="IF" condition="'${error_info}' == 'PASS'">
+<kw name="Query" library="RPA.Database">
+<arg>UPDATE Client_Details SET Logs = 'Finished' Where FirstName = '${current_client}[0]' and LastName = '${current_client}[1]'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:39.791" level="INFO">Executing query: UPDATE Client_Details SET Logs = 'Finished' Where FirstName = 'Stacy                                             ' and LastName = 'Shelby                                            '</msg>
+<status status="PASS" starttime="20220427 15:48:39.791" endtime="20220427 15:48:40.503"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:39.791" endtime="20220427 15:48:40.503"/>
+</branch>
+<status status="PASS" starttime="20220427 15:48:39.791" endtime="20220427 15:48:40.503"/>
+</if>
+<kw name="Set Variable" library="BuiltIn">
+<var>${starter}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220427 15:48:40.503" level="INFO">${starter} = 1</msg>
+<status status="PASS" starttime="20220427 15:48:40.503" endtime="20220427 15:48:40.503"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<var>${client_count}</var>
+<arg>SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:40.503" level="INFO">Executing query: SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</msg>
+<msg timestamp="20220427 15:48:41.212" level="INFO">${client_count} = Table(columns=[''], rows=1)</msg>
+<status status="PASS" starttime="20220427 15:48:40.503" endtime="20220427 15:48:41.212"/>
+</kw>
+<status status="PASS" starttime="20220427 15:48:36.246" endtime="20220427 15:48:41.212"/>
+</iter>
+<iter>
+<var name="${i}">4</var>
+<kw name="Get Data And Fill The Form">
+<var>${current_client}</var>
+<var>${error_info}</var>
+<kw name="Get Data From MSSQL DB">
+<var>${row}</var>
+<kw name="Query" library="RPA.Database">
+<var>${orders}</var>
+<arg>Select Top(1) * FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:41.212" level="INFO">Executing query: Select Top(1) * FROM Client_Details Where Logs = 'Pending'</msg>
+<msg timestamp="20220427 15:48:41.923" level="INFO">${orders} = Table(columns=['FirstName', 'LastName', 'CompanyName', 'RoleInCompany', 'Address', 'Email', 'PhoneNumber', 'Logs'], rows=0)</msg>
+<status status="PASS" starttime="20220427 15:48:41.212" endtime="20220427 15:48:41.923"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<arg>UPDATE Client_Details SET Logs = 'InProgress' Where FirstName = '${orders}[0][0]' and LastName = '${orders}[0][1]'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<msg timestamp="20220427 15:48:41.939" level="FAIL">Table '${orders}' has no item in index 0.</msg>
+<status status="FAIL" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</kw>
+<kw name="Notebook Print" library="RPA.core.notebook">
+<arg>${orders}[0]</arg>
+<doc>Display IPython Markdown object in the notebook</doc>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${orders}[0]</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</kw>
+<status status="FAIL" starttime="20220427 15:48:41.212" endtime="20220427 15:48:41.939"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${error_info}</var>
+<var>${error_msg}</var>
+<arg>Fill And Submit The Form DB</arg>
+<arg>${row}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${row}</arg>
+<arg>${error_info}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</kw>
+<status status="FAIL" starttime="20220427 15:48:41.212" endtime="20220427 15:48:41.939"/>
+</kw>
+<if>
+<branch type="IF" condition="'${error_info}' == 'PASS'">
+<kw name="Query" library="RPA.Database">
+<arg>UPDATE Client_Details SET Logs = 'Finished' Where FirstName = '${current_client}[0]' and LastName = '${current_client}[1]'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</kw>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</branch>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</if>
+<kw name="Set Variable" library="BuiltIn">
+<var>${starter}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</kw>
+<kw name="Query" library="RPA.Database">
+<var>${client_count}</var>
+<arg>SELECT COUNT(FirstName) FROM Client_Details Where Logs = 'Pending'</arg>
+<doc>Execute a SQL query and optionally return the execution result.</doc>
+<status status="NOT RUN" starttime="20220427 15:48:41.939" endtime="20220427 15:48:41.939"/>
+</kw>
+<status status="FAIL" starttime="20220427 15:48:41.212" endtime="20220427 15:48:41.939"/>
+</iter>
+<status status="FAIL" starttime="20220427 15:48:25.233" endtime="20220427 15:48:41.939"/>
+</for>
+<status status="FAIL" starttime="20220427 15:48:16.469" endtime="20220427 15:48:41.955"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Done.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220427 15:48:41.955" endtime="20220427 15:48:41.955"/>
+</kw>
+<status status="FAIL" starttime="20220427 15:48:16.468" endtime="20220427 15:48:41.955">Table '${orders}' has no item in index 0.</status>
+</test>
+<doc>Template robot main suite.
+RPA Challenge</doc>
+<status status="FAIL" starttime="20220427 15:48:12.171" endtime="20220427 15:48:41.959"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220427 15:48:14.355" level="WARN">This is a deprecated import that will be removed in favor of RPA.Browser.Selenium</msg>
+</errors>
+</robot>

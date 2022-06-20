@@ -1,0 +1,11 @@
+==============================================================================
+Tasks :: Template robot main suite. RPA Challenge                             
+==============================================================================
+Minimal task                                                          | FAIL |
+Table '${orders}' has no item in index 0.
+------------------------------------------------------------------------------
+Tasks :: Template robot main suite. RPA Challenge                     | FAIL |
+1 task, 0 passed, 1 failed
+==============================================================================
+Output:  C:\robot_run\RPA_Challenge\output\output.xml
+Log:     C:\robot_run\RPA_Challenge\output\log.html
