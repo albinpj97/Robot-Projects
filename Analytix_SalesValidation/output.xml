@@ -1,0 +1,1545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on win32)" generated="20220705 12:42:56.205" rpa="false" schemaversion="3">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\mafna.janeefar\.vscode\extensions\robocorp.robotframework-lsp-0.48.2\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<test id="s1-t1" name="Default Task/Test" line="5">
+<kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="Load Location Mapping" library="Functions">
+<arg>C:\Robocorp\Analytix_SalesValidation\Input\SalesValidationConfigFullClient.xlsx</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220705 12:45:49.309" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="FAIL" starttime="20220705 12:45:49.309" endtime="20220705 12:45:49.325"/>
+</kw>
+<msg timestamp="20220705 12:45:49.325" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20220705 12:45:49.325" level="INFO">${reason} = FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="PASS" starttime="20220705 12:45:49.309" endtime="20220705 12:45:49.325"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<status status="NOT RUN" starttime="20220705 12:45:49.325" endtime="20220705 12:45:49.325"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${LocationMapping}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220705 12:45:49.325" endtime="20220705 12:45:49.325"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 12:45:49.325" endtime="20220705 12:45:49.325"/>
+</branch>
+<status status="PASS" starttime="20220705 12:45:49.325" endtime="20220705 12:45:49.325"/>
+</if>
+<status status="PASS" starttime="20220705 12:45:49.309" endtime="20220705 12:45:49.325"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>C:\Robocorp\Analytix_SalesValidation\Input\SalesValidationConfigFullClient.xlsx</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220705 12:46:59.425" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="FAIL" starttime="20220705 12:46:59.424" endtime="20220705 12:46:59.426"/>
+</kw>
+<msg timestamp="20220705 12:46:59.426" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20220705 12:46:59.426" level="INFO">${reason} = FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="PASS" starttime="20220705 12:46:59.424" endtime="20220705 12:46:59.426"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<status status="NOT RUN" starttime="20220705 12:46:59.426" endtime="20220705 12:46:59.426"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${LocationMapping}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220705 12:46:59.427" endtime="20220705 12:46:59.427"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 12:46:59.426" endtime="20220705 12:46:59.427"/>
+</branch>
+<status status="PASS" starttime="20220705 12:46:59.426" endtime="20220705 12:46:59.427"/>
+</if>
+<status status="PASS" starttime="20220705 12:46:59.423" endtime="20220705 12:46:59.427"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>C:\Robocorp\Analytix_SalesValidation\Input\SalesValidationConfigFullClient.xlsx</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220705 12:47:11.034" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="FAIL" starttime="20220705 12:47:11.033" endtime="20220705 12:47:11.035"/>
+</kw>
+<msg timestamp="20220705 12:47:11.035" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20220705 12:47:11.035" level="INFO">${reason} = FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="PASS" starttime="20220705 12:47:11.032" endtime="20220705 12:47:11.035"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<status status="NOT RUN" starttime="20220705 12:47:11.036" endtime="20220705 12:47:11.036"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${LocationMapping}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220705 12:47:11.036" endtime="20220705 12:47:11.037"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 12:47:11.035" endtime="20220705 12:47:11.037"/>
+</branch>
+<status status="PASS" starttime="20220705 12:47:11.035" endtime="20220705 12:47:11.037"/>
+</if>
+<status status="PASS" starttime="20220705 12:47:11.031" endtime="20220705 12:47:11.037"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>C:\Robocorp\Analytix_SalesValidation\Input\SalesValidationConfigFullClient.xlsx</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220705 12:47:27.267" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="FAIL" starttime="20220705 12:47:27.265" endtime="20220705 12:47:27.267"/>
+</kw>
+<msg timestamp="20220705 12:47:27.267" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20220705 12:47:27.267" level="INFO">${reason} = FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="PASS" starttime="20220705 12:47:27.264" endtime="20220705 12:47:27.267"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<status status="NOT RUN" starttime="20220705 12:47:27.268" endtime="20220705 12:47:27.268"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${LocationMapping}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220705 12:47:27.269" endtime="20220705 12:47:27.269"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 12:47:27.268" endtime="20220705 12:47:27.269"/>
+</branch>
+<status status="PASS" starttime="20220705 12:47:27.268" endtime="20220705 12:47:27.269"/>
+</if>
+<status status="PASS" starttime="20220705 12:47:27.263" endtime="20220705 12:47:27.269"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>C:\Robocorp\Analytix_SalesValidation\Input\SalesValidationConfigFullClient.xlsx</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220705 12:48:09.060" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="FAIL" starttime="20220705 12:48:09.059" endtime="20220705 12:48:09.060"/>
+</kw>
+<msg timestamp="20220705 12:48:09.060" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20220705 12:48:09.060" level="INFO">${reason} = FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="PASS" starttime="20220705 12:48:09.058" endtime="20220705 12:48:09.060"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<status status="NOT RUN" starttime="20220705 12:48:09.061" endtime="20220705 12:48:09.061"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${LocationMapping}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220705 12:48:09.061" endtime="20220705 12:48:09.061"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 12:48:09.061" endtime="20220705 12:48:09.061"/>
+</branch>
+<status status="PASS" starttime="20220705 12:48:09.060" endtime="20220705 12:48:09.061"/>
+</if>
+<status status="PASS" starttime="20220705 12:48:09.057" endtime="20220705 12:48:09.061"/>
+</kw>
+<kw name="Load Location Mapping">
+<msg timestamp="20220705 12:48:38.539" level="FAIL">Keyword 'Load Location Mapping' expected 1 argument, got 0.</msg>
+<status status="FAIL" starttime="20220705 12:48:38.539" endtime="20220705 12:48:38.539"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>C:\Robocorp\Analytix_SalesValidation\Input\SalesValidationConfigFullClient.xlsx</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220705 12:48:43.139" level="FAIL">FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="FAIL" starttime="20220705 12:48:43.138" endtime="20220705 12:48:43.139"/>
+</kw>
+<msg timestamp="20220705 12:48:43.139" level="INFO">${status} = FAIL</msg>
+<msg timestamp="20220705 12:48:43.139" level="INFO">${reason} = FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:RobocorpAnalytix_SalesValidationInputSalesValidationConfigFullClient.xlsx'</msg>
+<status status="PASS" starttime="20220705 12:48:43.138" endtime="20220705 12:48:43.139"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<status status="NOT RUN" starttime="20220705 12:48:43.140" endtime="20220705 12:48:43.140"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${LocationMapping}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220705 12:48:43.140" endtime="20220705 12:48:43.140"/>
+</kw>
+<status status="NOT RUN" starttime="20220705 12:48:43.139" endtime="20220705 12:48:43.140"/>
+</branch>
+<status status="PASS" starttime="20220705 12:48:43.139" endtime="20220705 12:48:43.140"/>
+</if>
+<status status="PASS" starttime="20220705 12:48:43.136" endtime="20220705 12:48:43.140"/>
+</kw>
+<kw name="test">
+<kw name="Init Process" library="Functions">
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesValidationConfig}</arg>
+<arg>${EXECDIR}/Input/SalesValidationConfig.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.150" endtime="20220705 12:50:04.150"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RunReportPath}</arg>
+<arg>${EXECDIR}/Output/RunReport.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.150" endtime="20220705 12:50:04.150"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.150" endtime="20220705 12:50:04.150"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${CLRReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplateClr.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.150" endtime="20220705 12:50:04.150"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${POSReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplatePos.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.150" endtime="20220705 12:50:04.150"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${AUTO_DOWNLOAD_FOLDER_PATH}</arg>
+<arg>${EXECDIR}${/}DownloadTemp</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.150" endtime="20220705 12:50:04.158"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${Retry}</arg>
+<arg>10</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.158" endtime="20220705 12:50:04.158"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RetrySeconds}</arg>
+<arg>5</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.158" endtime="20220705 12:50:04.158"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${JsonFilePath}</arg>
+<arg>${EXECDIR}/Input</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.158" endtime="20220705 12:50:04.158"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetTempPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheetTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.158" endtime="20220705 12:50:04.158"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheet.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:50:04.158" endtime="20220705 12:50:04.158"/>
+</kw>
+<status status="PASS" starttime="20220705 12:50:04.150" endtime="20220705 12:50:04.158"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>${SalesValidationConfig}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<status status="PASS" starttime="20220705 12:50:04.158" endtime="20220705 12:50:04.246"/>
+</kw>
+<msg timestamp="20220705 12:50:04.246" level="INFO">${status} = PASS</msg>
+<msg timestamp="20220705 12:50:04.246" level="INFO">${reason} = &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000002271249C788&gt;</msg>
+<status status="PASS" starttime="20220705 12:50:04.158" endtime="20220705 12:50:04.254"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220705 12:50:04.254" level="FAIL">KeyError: 'Worksheet Location_Mapping does not exist.'</msg>
+<status status="FAIL" starttime="20220705 12:50:04.254" endtime="20220705 12:50:04.254"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${LocationMapping}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220705 12:50:04.254" endtime="20220705 12:50:04.254"/>
+</kw>
+<status status="FAIL" starttime="20220705 12:50:04.254" endtime="20220705 12:50:04.254"/>
+</branch>
+<status status="FAIL" starttime="20220705 12:50:04.254" endtime="20220705 12:50:04.254"/>
+</if>
+<status status="FAIL" starttime="20220705 12:50:04.158" endtime="20220705 12:50:04.254"/>
+</kw>
+<status status="FAIL" starttime="20220705 12:50:04.150" endtime="20220705 12:50:04.254"/>
+</kw>
+<kw name="test">
+<kw name="Init Process">
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesValidationConfig}</arg>
+<arg>${EXECDIR}/Input/SalesValidationConfigFullClient.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RunReportPath}</arg>
+<arg>${EXECDIR}/Output/RunReport.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${CLRReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplateClr.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${POSReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplatePos.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${AUTO_DOWNLOAD_FOLDER_PATH}</arg>
+<arg>${EXECDIR}${/}DownloadTemp</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${Retry}</arg>
+<arg>10</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RetrySeconds}</arg>
+<arg>5</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${JsonFilePath}</arg>
+<arg>${EXECDIR}/Input</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetTempPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheetTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.824"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheet.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.832"/>
+</kw>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.832"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>${SalesValidationConfig}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220705 12:51:15.904" level="INFO">C:\Users\mafna.janeefar\AppData\Local\robocorp\holotree\b1f3c244e_1c0bc041\lib\site-packages\openpyxl\worksheet\_reader.py:312: UserWarning: Data Validation extension is not supported and will be removed
+  warn(msg)</msg>
+<status status="PASS" starttime="20220705 12:51:15.832" endtime="20220705 12:51:15.904"/>
+</kw>
+<msg timestamp="20220705 12:51:15.904" level="INFO">${status} = PASS</msg>
+<msg timestamp="20220705 12:51:15.904" level="INFO">${reason} = &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000022712420348&gt;</msg>
+<status status="PASS" starttime="20220705 12:51:15.832" endtime="20220705 12:51:15.904"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220705 12:51:15.904" level="INFO">${LocationMapping} = Table(columns=['Client', 'InsightLocationName', 'SquareUpLocationName'], rows=34)</msg>
+<status status="PASS" starttime="20220705 12:51:15.904" endtime="20220705 12:51:15.904"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${LocationMapping}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:51:15.904" endtime="20220705 12:51:15.904"/>
+</kw>
+<status status="PASS" starttime="20220705 12:51:15.904" endtime="20220705 12:51:15.904"/>
+</branch>
+<status status="PASS" starttime="20220705 12:51:15.904" endtime="20220705 12:51:15.904"/>
+</if>
+<status status="PASS" starttime="20220705 12:51:15.832" endtime="20220705 12:51:15.904"/>
+</kw>
+<status status="PASS" starttime="20220705 12:51:15.824" endtime="20220705 12:51:15.904"/>
+</kw>
+<kw name="test">
+<kw name="Init Process">
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesValidationConfig}</arg>
+<arg>${EXECDIR}/Input/SalesValidationConfigFullClient.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.863" endtime="20220705 12:52:38.864"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RunReportPath}</arg>
+<arg>${EXECDIR}/Output/RunReport.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.864" endtime="20220705 12:52:38.864"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.864" endtime="20220705 12:52:38.865"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${CLRReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplateClr.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.865" endtime="20220705 12:52:38.865"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${POSReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplatePos.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.865" endtime="20220705 12:52:38.866"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${AUTO_DOWNLOAD_FOLDER_PATH}</arg>
+<arg>${EXECDIR}${/}DownloadTemp</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.866" endtime="20220705 12:52:38.866"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${Retry}</arg>
+<arg>10</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.866" endtime="20220705 12:52:38.866"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RetrySeconds}</arg>
+<arg>5</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.867" endtime="20220705 12:52:38.867"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${JsonFilePath}</arg>
+<arg>${EXECDIR}/Input</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.867" endtime="20220705 12:52:38.868"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetTempPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheetTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.868" endtime="20220705 12:52:38.868"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheet.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:52:38.868" endtime="20220705 12:52:38.868"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.863" endtime="20220705 12:52:38.869"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>${SalesValidationConfig}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<status status="PASS" starttime="20220705 12:52:38.869" endtime="20220705 12:52:38.941"/>
+</kw>
+<msg timestamp="20220705 12:52:38.941" level="INFO">${status} = PASS</msg>
+<msg timestamp="20220705 12:52:38.941" level="INFO">${reason} = &lt;RPA.Excel.Files.XlsxWorkbook object at 0x0000022711F04A08&gt;</msg>
+<status status="PASS" starttime="20220705 12:52:38.869" endtime="20220705 12:52:38.941"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220705 12:52:38.944" level="INFO">${LocationMapping} = Table(columns=['Client', 'InsightLocationName', 'SquareUpLocationName'], rows=34)</msg>
+<status status="PASS" starttime="20220705 12:52:38.942" endtime="20220705 12:52:38.944"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{LocationMapping}</value>
+<iter>
+<var name="${row}">{'Client': 'VHCLE Holdings', 'InsightLocationName': 'Low Brau', 'SquareUpLocationName': 'LowBrau'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.946" endtime="20220705 12:52:38.947"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.945" endtime="20220705 12:52:38.947"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'VHCLE Holdings', 'InsightLocationName': 'Milk Money', 'SquareUpLocationName': 'MILK MONEY'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.948" endtime="20220705 12:52:38.948"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.947" endtime="20220705 12:52:38.948"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Taub Family Outpost', 'InsightLocationName': 'Taub Family Outpost', 'SquareUpLocationName': 'Taub Family Outpost'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.949" endtime="20220705 12:52:38.949"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.948" endtime="20220705 12:52:38.949"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'FLX Hospitality', 'InsightLocationName': 'F L X Fry Bird     ', 'SquareUpLocationName': 'F.L.X. Fry Bird'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.950" endtime="20220705 12:52:38.950"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.949" endtime="20220705 12:52:38.950"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'FLX Hospitality', 'InsightLocationName': 'F L X Provisions - Geneva', 'SquareUpLocationName': 'F.L.X. Provisions'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.951" endtime="20220705 12:52:38.952"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.950" endtime="20220705 12:52:38.952"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'FLX Hospitality', 'InsightLocationName': 'F L X Wienery Dundee', 'SquareUpLocationName': 'FLX Wienery'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.953" endtime="20220705 12:52:38.954"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.953" endtime="20220705 12:52:38.954"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'FLX Hospitality', 'InsightLocationName': 'Quincy on Market', 'SquareUpLocationName': 'Quincy on Market'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.955" endtime="20220705 12:52:38.955"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.954" endtime="20220705 12:52:38.955"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Culver City', 'SquareUpLocationName': 'WSD Culver City'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.956" endtime="20220705 12:52:38.956"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.955" endtime="20220705 12:52:38.956"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Downtown Oakland', 'SquareUpLocationName': 'WSD Downtown Oakland'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.957" endtime="20220705 12:52:38.958"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.956" endtime="20220705 12:52:38.958"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Fillmore', 'SquareUpLocationName': 'x WSD Fillmore'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.959" endtime="20220705 12:52:38.959"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.958" endtime="20220705 12:52:38.960"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Hayes Valley', 'SquareUpLocationName': 'WSD Hayes Valley'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.961" endtime="20220705 12:52:38.962"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.960" endtime="20220705 12:52:38.963"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Temescal', 'SquareUpLocationName': 'x WSD Temescal'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.965" endtime="20220705 12:52:38.966"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.964" endtime="20220705 12:52:38.966"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Noe Valley Bakery', 'InsightLocationName': 'Noe Valley Bakery- 24th Street', 'SquareUpLocationName': '24th Street'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.966" endtime="20220705 12:52:38.967"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.966" endtime="20220705 12:52:38.967"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Noe Valley Bakery', 'InsightLocationName': 'Noe Valley Bakery- West Portal', 'SquareUpLocationName': 'West Portal'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.968" endtime="20220705 12:52:38.969"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.968" endtime="20220705 12:52:38.970"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-Bar Flores', 'SquareUpLocationName': 'BF'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.970" endtime="20220705 12:52:38.971"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.970" endtime="20220705 12:52:38.971"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-Bar Flores Taco Cart', 'SquareUpLocationName': 'Flores Taco Cart'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.972" endtime="20220705 12:52:38.973"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.972" endtime="20220705 12:52:38.973"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-Lowboy', 'SquareUpLocationName': 'LB'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.974" endtime="20220705 12:52:38.975"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.973" endtime="20220705 12:52:38.975"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-Park Bars Consolidated', 'SquareUpLocationName': 'PK'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.975" endtime="20220705 12:52:38.976"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.975" endtime="20220705 12:52:38.977"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-To Go Window', 'SquareUpLocationName': 'Window'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.977" endtime="20220705 12:52:38.978"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.977" endtime="20220705 12:52:38.978"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Firetrail Pizza', 'InsightLocationName': 'FIRETRAIL PIZZA - Reno', 'SquareUpLocationName': 'Reno'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.979" endtime="20220705 12:52:38.979"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.979" endtime="20220705 12:52:38.980"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Firetrail Pizza', 'InsightLocationName': 'FIRETRAIL PIZZA - Spark', 'SquareUpLocationName': 'SPARK Social SF'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.980" endtime="20220705 12:52:38.981"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.980" endtime="20220705 12:52:38.981"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Mission NPT', 'InsightLocationName': 'Mission NPT', 'SquareUpLocationName': 'Mission'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.982" endtime="20220705 12:52:38.982"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.981" endtime="20220705 12:52:38.982"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'United States of Espresso', 'InsightLocationName': 'United States of Espresso- USC Truck', 'SquareUpLocationName': 'USC'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.983" endtime="20220705 12:52:38.984"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.983" endtime="20220705 12:52:38.986"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'United States of Espresso', 'InsightLocationName': 'United States of Espresso- Venice Cafe', 'SquareUpLocationName': 'USofE Venice Cafe'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.987" endtime="20220705 12:52:38.988"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.986" endtime="20220705 12:52:38.988"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Broad Street Oyster Co', 'InsightLocationName': 'Broad Street Coffee Co', 'SquareUpLocationName': 'Broad Street Coffee Co.'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.989" endtime="20220705 12:52:38.990"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.988" endtime="20220705 12:52:38.990"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Broad Street Oyster Co', 'InsightLocationName': 'Broad Street Oyster Company- Smorgasburg Miami', 'SquareUpLocationName': 'Smorgasburg Miami'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.991" endtime="20220705 12:52:38.992"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.991" endtime="20220705 12:52:38.993"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Broad Street Oyster Co', 'InsightLocationName': 'Broad Street Oyster- Santa Barbara', 'SquareUpLocationName': 'Santa Barbara'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.993" endtime="20220705 12:52:38.994"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.993" endtime="20220705 12:52:38.995"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Webster', 'SquareUpLocationName': '1628 Webster'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.995" endtime="20220705 12:52:38.996"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.995" endtime="20220705 12:52:38.996"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Valencia', 'SquareUpLocationName': '990 Valencia'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.997" endtime="20220705 12:52:38.997"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.996" endtime="20220705 12:52:38.997"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Catering-Commissary', 'SquareUpLocationName': 'Catering'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.998" endtime="20220705 12:52:38.998"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.998" endtime="20220705 12:52:38.998"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Truck1', 'SquareUpLocationName': 'Truck 1'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:38.999" endtime="20220705 12:52:38.999"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.999" endtime="20220705 12:52:39.000"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Truck2', 'SquareUpLocationName': 'Truck 2'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:39.002" endtime="20220705 12:52:39.002"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:39.001" endtime="20220705 12:52:39.002"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Truck3', 'SquareUpLocationName': 'Truck 3'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:39.003" endtime="20220705 12:52:39.004"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:39.003" endtime="20220705 12:52:39.004"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Truck4', 'SquareUpLocationName': 'Truck 4'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${row}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:52:39.004" endtime="20220705 12:52:39.005"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:39.004" endtime="20220705 12:52:39.005"/>
+</iter>
+<status status="PASS" starttime="20220705 12:52:38.945" endtime="20220705 12:52:39.005"/>
+</for>
+<status status="PASS" starttime="20220705 12:52:38.942" endtime="20220705 12:52:39.005"/>
+</branch>
+<status status="PASS" starttime="20220705 12:52:38.942" endtime="20220705 12:52:39.005"/>
+</if>
+<status status="PASS" starttime="20220705 12:52:38.869" endtime="20220705 12:52:39.006"/>
+</kw>
+<status status="PASS" starttime="20220705 12:52:38.863" endtime="20220705 12:52:39.006"/>
+</kw>
+<kw name="test">
+<kw name="Init Process">
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesValidationConfig}</arg>
+<arg>${EXECDIR}/Input/SalesValidationConfigFullClient.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.701" endtime="20220705 12:58:42.702"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RunReportPath}</arg>
+<arg>${EXECDIR}/Output/RunReport.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.703" endtime="20220705 12:58:42.703"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.703" endtime="20220705 12:58:42.703"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${CLRReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplateClr.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.703" endtime="20220705 12:58:42.705"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${POSReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplatePos.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.705" endtime="20220705 12:58:42.705"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${AUTO_DOWNLOAD_FOLDER_PATH}</arg>
+<arg>${EXECDIR}${/}DownloadTemp</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.705" endtime="20220705 12:58:42.705"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${Retry}</arg>
+<arg>10</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.705" endtime="20220705 12:58:42.705"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RetrySeconds}</arg>
+<arg>5</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.705" endtime="20220705 12:58:42.705"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${JsonFilePath}</arg>
+<arg>${EXECDIR}/Input</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.705" endtime="20220705 12:58:42.705"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetTempPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheetTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.705" endtime="20220705 12:58:42.705"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheet.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 12:58:42.713" endtime="20220705 12:58:42.714"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.699" endtime="20220705 12:58:42.714"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>${SalesValidationConfig}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<status status="PASS" starttime="20220705 12:58:42.716" endtime="20220705 12:58:42.847"/>
+</kw>
+<msg timestamp="20220705 12:58:42.847" level="INFO">${status} = PASS</msg>
+<msg timestamp="20220705 12:58:42.847" level="INFO">${reason} = &lt;RPA.Excel.Files.XlsxWorkbook object at 0x00000227124D80C8&gt;</msg>
+<status status="PASS" starttime="20220705 12:58:42.715" endtime="20220705 12:58:42.847"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220705 12:58:42.847" level="INFO">${LocationMapping} = Table(columns=['Client', 'InsightLocationName', 'SquareUpLocationName'], rows=34)</msg>
+<status status="PASS" starttime="20220705 12:58:42.847" endtime="20220705 12:58:42.847"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{MappingDictionary}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220705 12:58:42.855" level="INFO">&amp;{MappingDictionary} = { }</msg>
+<status status="PASS" starttime="20220705 12:58:42.847" endtime="20220705 12:58:42.855"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{LocationMapping}</value>
+<iter>
+<var name="${row}">{'Client': 'VHCLE Holdings', 'InsightLocationName': 'Low Brau', 'SquareUpLocationName': 'LowBrau'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.855"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.855"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'VHCLE Holdings', 'InsightLocationName': 'Milk Money', 'SquareUpLocationName': 'MILK MONEY'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.855"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.855"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Taub Family Outpost', 'InsightLocationName': 'Taub Family Outpost', 'SquareUpLocationName': 'Taub Family Outpost'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.855"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.855"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'FLX Hospitality', 'InsightLocationName': 'F L X Fry Bird     ', 'SquareUpLocationName': 'F.L.X. Fry Bird'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.855"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.855"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'FLX Hospitality', 'InsightLocationName': 'F L X Provisions - Geneva', 'SquareUpLocationName': 'F.L.X. Provisions'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.864" endtime="20220705 12:58:42.864"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.864" endtime="20220705 12:58:42.864"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'FLX Hospitality', 'InsightLocationName': 'F L X Wienery Dundee', 'SquareUpLocationName': 'FLX Wienery'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.866" endtime="20220705 12:58:42.867"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.865" endtime="20220705 12:58:42.867"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'FLX Hospitality', 'InsightLocationName': 'Quincy on Market', 'SquareUpLocationName': 'Quincy on Market'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.867" endtime="20220705 12:58:42.867"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.867" endtime="20220705 12:58:42.867"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Culver City', 'SquareUpLocationName': 'WSD Culver City'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.867" endtime="20220705 12:58:42.867"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.867" endtime="20220705 12:58:42.867"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Downtown Oakland', 'SquareUpLocationName': 'WSD Downtown Oakland'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.867" endtime="20220705 12:58:42.867"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.867" endtime="20220705 12:58:42.867"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Fillmore', 'SquareUpLocationName': 'x WSD Fillmore'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Hayes Valley', 'SquareUpLocationName': 'WSD Hayes Valley'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Wise Sons Deli', 'InsightLocationName': 'Wise Sons Jewish Delicatessen - Temescal', 'SquareUpLocationName': 'x WSD Temescal'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Noe Valley Bakery', 'InsightLocationName': 'Noe Valley Bakery- 24th Street', 'SquareUpLocationName': '24th Street'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Noe Valley Bakery', 'InsightLocationName': 'Noe Valley Bakery- West Portal', 'SquareUpLocationName': 'West Portal'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-Bar Flores', 'SquareUpLocationName': 'BF'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.875"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-Bar Flores Taco Cart', 'SquareUpLocationName': 'Flores Taco Cart'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.883"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.875" endtime="20220705 12:58:42.883"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-Lowboy', 'SquareUpLocationName': 'LB'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.883"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.883"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-Park Bars Consolidated', 'SquareUpLocationName': 'PK'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.883"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.883"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Park Bars', 'InsightLocationName': 'Park Bars-To Go Window', 'SquareUpLocationName': 'Window'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.883"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.883"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Firetrail Pizza', 'InsightLocationName': 'FIRETRAIL PIZZA - Reno', 'SquareUpLocationName': 'Reno'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.883"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.883"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Firetrail Pizza', 'InsightLocationName': 'FIRETRAIL PIZZA - Spark', 'SquareUpLocationName': 'SPARK Social SF'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.891"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.883" endtime="20220705 12:58:42.891"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Mission NPT', 'InsightLocationName': 'Mission NPT', 'SquareUpLocationName': 'Mission'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'United States of Espresso', 'InsightLocationName': 'United States of Espresso- USC Truck', 'SquareUpLocationName': 'USC'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'United States of Espresso', 'InsightLocationName': 'United States of Espresso- Venice Cafe', 'SquareUpLocationName': 'USofE Venice Cafe'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Broad Street Oyster Co', 'InsightLocationName': 'Broad Street Coffee Co', 'SquareUpLocationName': 'Broad Street Coffee Co.'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Broad Street Oyster Co', 'InsightLocationName': 'Broad Street Oyster Company- Smorgasburg Miami', 'SquareUpLocationName': 'Smorgasburg Miami'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.891"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Broad Street Oyster Co', 'InsightLocationName': 'Broad Street Oyster- Santa Barbara', 'SquareUpLocationName': 'Santa Barbara'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.897" endtime="20220705 12:58:42.898"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.891" endtime="20220705 12:58:42.898"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Webster', 'SquareUpLocationName': '1628 Webster'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.898"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.898"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Valencia', 'SquareUpLocationName': '990 Valencia'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.898"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.898"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Catering-Commissary', 'SquareUpLocationName': 'Catering'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.898"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.898"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Truck1', 'SquareUpLocationName': 'Truck 1'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.898"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.898"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Truck2', 'SquareUpLocationName': 'Truck 2'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.905"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.898" endtime="20220705 12:58:42.905"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Truck3', 'SquareUpLocationName': 'Truck 3'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.905" endtime="20220705 12:58:42.905"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.905" endtime="20220705 12:58:42.905"/>
+</iter>
+<iter>
+<var name="${row}">{'Client': 'Senor Sisig Corp', 'InsightLocationName': 'SENOR SISIG - Truck4', 'SquareUpLocationName': 'Truck 4'}</var>
+<kw name="Set To Dictionary" library="Collections">
+<arg>${MappingDictionary}</arg>
+<arg>key=${row}[Client]</arg>
+<arg>value=${row}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220705 12:58:42.905" endtime="20220705 12:58:42.905"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.905" endtime="20220705 12:58:42.905"/>
+</iter>
+<status status="PASS" starttime="20220705 12:58:42.855" endtime="20220705 12:58:42.905"/>
+</for>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${MappingDictionary}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220705 12:58:42.905" endtime="20220705 12:58:42.905"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.847" endtime="20220705 12:58:42.905"/>
+</branch>
+<status status="PASS" starttime="20220705 12:58:42.847" endtime="20220705 12:58:42.905"/>
+</if>
+<status status="PASS" starttime="20220705 12:58:42.714" endtime="20220705 12:58:42.905"/>
+</kw>
+<status status="PASS" starttime="20220705 12:58:42.697" endtime="20220705 12:58:42.905"/>
+</kw>
+<kw name="test">
+<kw name="Init Process">
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesValidationConfig}</arg>
+<arg>${EXECDIR}/Input/SalesValidationConfigFullClient.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.550"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RunReportPath}</arg>
+<arg>${EXECDIR}/Output/RunReport.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.550"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.550"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${CLRReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplateClr.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.550"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${POSReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplatePos.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.550"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${AUTO_DOWNLOAD_FOLDER_PATH}</arg>
+<arg>${EXECDIR}${/}DownloadTemp</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.550"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${Retry}</arg>
+<arg>10</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.550"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RetrySeconds}</arg>
+<arg>5</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.550"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${JsonFilePath}</arg>
+<arg>${EXECDIR}/Input</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.561"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetTempPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheetTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.561" endtime="20220705 13:11:39.561"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheet.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" starttime="20220705 13:11:39.562" endtime="20220705 13:11:39.563"/>
+</kw>
+<status status="PASS" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.563"/>
+</kw>
+<kw name="Load Location Mapping">
+<arg>${SalesValidationConfig}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<status status="PASS" starttime="20220705 13:11:39.564" endtime="20220705 13:11:39.637"/>
+</kw>
+<msg timestamp="20220705 13:11:39.638" level="INFO">${status} = PASS</msg>
+<msg timestamp="20220705 13:11:39.638" level="INFO">${reason} = &lt;RPA.Excel.Files.XlsxWorkbook object at 0x00000227120C27C8&gt;</msg>
+<status status="PASS" starttime="20220705 13:11:39.564" endtime="20220705 13:11:39.638"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${LocationMapping}</var>
+<arg>name=Location_Mapping</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220705 13:11:39.639" level="INFO">${LocationMapping} = Table(columns=['Client', 'InsightLocationName', 'SquareUpLocationName'], rows=34)</msg>
+<status status="PASS" starttime="20220705 13:11:39.638" endtime="20220705 13:11:39.639"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220705 13:11:39.639" level="INFO">${list} = []</msg>
+<status status="PASS" starttime="20220705 13:11:39.639" endtime="20220705 13:11:39.639"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${dict}</var>
+<arg>list</arg>
+<arg>${list}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220705 13:11:39.640" level="INFO">${dict} = {'list': []}</msg>
+<status status="PASS" starttime="20220705 13:11:39.640" endtime="20220705 13:11:39.640"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${dict}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" starttime="20220705 13:11:39.640" endtime="20220705 13:11:39.640"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{LocationMapping}</value>
+<iter>
+<var name="${row}">{'Client': 'VHCLE Holdings', 'InsightLocationName': 'Low Brau', 'SquareUpLocationName': 'LowBrau'}</var>
+<kw name="Append To List" library="Collections">
+<arg>&amp;{dict}[list]</arg>
+<arg>${row}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<msg timestamp="20220705 13:11:39.641" level="FAIL">Keyword 'Collections.Append To List' got positional argument after named arguments.</msg>
+<status status="FAIL" starttime="20220705 13:11:39.641" endtime="20220705 13:11:39.641"/>
+</kw>
+<status status="FAIL" starttime="20220705 13:11:39.641" endtime="20220705 13:11:39.641"/>
+</iter>
+<status status="FAIL" starttime="20220705 13:11:39.640" endtime="20220705 13:11:39.641"/>
+</for>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${dict}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220705 13:11:39.641" endtime="20220705 13:11:39.641"/>
+</kw>
+<status status="FAIL" starttime="20220705 13:11:39.638" endtime="20220705 13:11:39.641"/>
+</branch>
+<status status="FAIL" starttime="20220705 13:11:39.638" endtime="20220705 13:11:39.642"/>
+</if>
+<status status="FAIL" starttime="20220705 13:11:39.563" endtime="20220705 13:11:39.642"/>
+</kw>
+<status status="FAIL" starttime="20220705 13:11:39.550" endtime="20220705 13:11:39.642"/>
+</kw>
+<status status="PASS" starttime="20220705 12:42:56.277" endtime="20220705 14:20:19.949"/>
+</kw>
+<status status="PASS" starttime="20220705 12:42:56.277" endtime="20220705 14:20:19.966"/>
+</test>
+<status status="PASS" starttime="20220705 12:42:56.205" endtime="20220705 14:20:19.990"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Robot Interactive Console">Robot Interactive Console</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

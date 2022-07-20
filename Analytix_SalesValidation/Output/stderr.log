@@ -1,0 +1,6 @@
+D:\ROBOCORP_TEMP\holotree\5a1fac3c5_9fcd2534\lib\site-packages\openpyxl\worksheet\_reader.py:312: UserWarning: Data Validation extension is not supported and will be removed
+  warn(msg)
+[ WARN ] Keyword 'Capture Page Screenshot' could not be run on failure: NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=103.0.5060.134)
+

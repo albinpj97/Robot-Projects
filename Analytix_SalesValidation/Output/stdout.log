@@ -1,0 +1,11 @@
+==============================================================================
+Tasks :: Template robot main suite.                                           
+==============================================================================
+Analytix Sales Validation Automation                                  | FAIL |
+Variable '${client}' not found.
+------------------------------------------------------------------------------
+Tasks :: Template robot main suite.                                   | FAIL |
+1 task, 0 passed, 1 failed
+==============================================================================
+Output:  D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation\output\output.xml
+Log:     D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation\output\log.html

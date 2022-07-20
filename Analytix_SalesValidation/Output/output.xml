@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.7.5 on win32)" generated="20220720 12:54:42.565" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation\tasks.robot">
+<test id="s1-t1" name="Analytix Sales Validation Automation" line="34">
+<kw name="Write Log Text" library="Log">
+<arg>'tasks'</arg>
+<arg>'-------------------Run started--------------------------'</arg>
+<arg>Output</arg>
+<arg>log</arg>
+<doc>type of log (exception/error etc), reason-note, location of file ,file name
+Ret:
+None</doc>
+<msg timestamp="20220720 12:56:16.149" level="INFO">'tasks' '-------------------Run started--------------------------' Output log</msg>
+<status status="PASS" starttime="20220720 12:56:16.140" endtime="20220720 12:56:16.149"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${mail_body}</var>
+<arg>Hi Team, ${\n}${\n}Please find the attached sales validation report. ${\n}${\n}Thank You,${\n}Bot</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220720 12:56:16.150" level="INFO">${mail_body} = Hi Team, 
+
+Please find the attached sales validation report. 
+
+Thank You,
+Bot</msg>
+<status status="PASS" starttime="20220720 12:56:16.149" endtime="20220720 12:56:16.150"/>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<var>${current_date}</var>
+<arg>result_format=%m/%d/%Y</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20220720 12:56:16.151" level="INFO">${current_date} = 07/20/2022</msg>
+<status status="PASS" starttime="20220720 12:56:16.150" endtime="20220720 12:56:16.151"/>
+</kw>
+<kw name="Init Process" library="Functions">
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesValidationConfig}</arg>
+<arg>${EXECDIR}/Input/SalesValidationConfig.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.152" level="INFO">${SalesValidationConfig} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation/Input/SalesValidationConfig.xlsx</msg>
+<status status="PASS" starttime="20220720 12:56:16.152" endtime="20220720 12:56:16.152"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RunReportPath}</arg>
+<arg>${EXECDIR}/Output/RunReport.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.154" level="INFO">${RunReportPath} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation/Output/RunReport.xlsx</msg>
+<status status="PASS" starttime="20220720 12:56:16.152" endtime="20220720 12:56:16.154"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${SalesReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplate.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.154" level="INFO">${SalesReportPath} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation/Input/ExtractTemplate.xlsx</msg>
+<status status="PASS" starttime="20220720 12:56:16.154" endtime="20220720 12:56:16.154"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${CLRReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplateClr.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.156" level="INFO">${CLRReportPath} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation/Input/ExtractTemplateClr.xlsx</msg>
+<status status="PASS" starttime="20220720 12:56:16.154" endtime="20220720 12:56:16.156"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${POSReportPath}</arg>
+<arg>${EXECDIR}/Input/ExtractTemplatePos.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.156" level="INFO">${POSReportPath} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation/Input/ExtractTemplatePos.xlsx</msg>
+<status status="PASS" starttime="20220720 12:56:16.156" endtime="20220720 12:56:16.157"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${AUTO_DOWNLOAD_FOLDER_PATH}</arg>
+<arg>${EXECDIR}${/}DownloadTemp</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.158" level="INFO">${AUTO_DOWNLOAD_FOLDER_PATH} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation\DownloadTemp</msg>
+<status status="PASS" starttime="20220720 12:56:16.157" endtime="20220720 12:56:16.158"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${Retry}</arg>
+<arg>10</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.159" level="INFO">${Retry} = 10</msg>
+<status status="PASS" starttime="20220720 12:56:16.158" endtime="20220720 12:56:16.159"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${RetrySeconds}</arg>
+<arg>5</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.160" level="INFO">${RetrySeconds} = 5</msg>
+<status status="PASS" starttime="20220720 12:56:16.159" endtime="20220720 12:56:16.160"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${JsonFilePath}</arg>
+<arg>${EXECDIR}/Input</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.161" level="INFO">${JsonFilePath} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation/Input</msg>
+<status status="PASS" starttime="20220720 12:56:16.160" endtime="20220720 12:56:16.161"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${MonthlyOutputSheetPath}</arg>
+<arg>${EXECDIR}/Output/MonthlyOutputSheet.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.163" level="INFO">${MonthlyOutputSheetPath} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation/Output/MonthlyOutputSheet.xlsx</msg>
+<status status="PASS" starttime="20220720 12:56:16.161" endtime="20220720 12:56:16.163"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${OutputSheetPath}</arg>
+<arg>${EXECDIR}/Output/OutputSheet.xlsx</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220720 12:56:16.164" level="INFO">${OutputSheetPath} = D:\Project\Analytix project\Analytix_SalesValidation_Lates1.1\Analytix_SalesValidation/Output/OutputSheet.xlsx</msg>
+<status status="PASS" starttime="20220720 12:56:16.163" endtime="20220720 12:56:16.164"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.151" endtime="20220720 12:56:16.164"/>
+</kw>
+<kw name="Reset Reports" library="Functions">
+<kw name="Empty Directory" library="RPA.FileSystem">
+<arg>path=${AUTO_DOWNLOAD_FOLDER_PATH}</arg>
+<doc>Removes all the files in the given directory.</doc>
+<status status="PASS" starttime="20220720 12:56:16.165" endtime="20220720 12:56:16.178"/>
+</kw>
+<kw name="Clear Excel Value" library="ExcelRemove">
+<arg>${RunReportPath}</arg>
+<arg>2</arg>
+<status status="PASS" starttime="20220720 12:56:16.178" endtime="20220720 12:56:16.401"/>
+</kw>
+<kw name="Clear Excel Value" library="ExcelRemove">
+<arg>${SalesReportPath}</arg>
+<arg>2</arg>
+<status status="PASS" starttime="20220720 12:56:16.401" endtime="20220720 12:56:16.463"/>
+</kw>
+<kw name="Clear Excel Value" library="ExcelRemove">
+<arg>${CLRReportPath}</arg>
+<arg>2</arg>
+<status status="PASS" starttime="20220720 12:56:16.463" endtime="20220720 12:56:16.478"/>
+</kw>
+<kw name="Clear Excel Value" library="ExcelRemove">
+<arg>${POSReportPath}</arg>
+<arg>2</arg>
+<status status="PASS" starttime="20220720 12:56:16.479" endtime="20220720 12:56:16.493"/>
+</kw>
+<kw name="Clear Excel Value" library="ExcelRemove">
+<arg>${OutputSheetPath}</arg>
+<arg>4</arg>
+<status status="PASS" starttime="20220720 12:56:16.494" endtime="20220720 12:56:16.547"/>
+</kw>
+<kw name="Clear Excel Value" library="ExcelRemove">
+<arg>${MonthlyOutputSheetPath}</arg>
+<arg>4</arg>
+<status status="PASS" starttime="20220720 12:56:16.548" endtime="20220720 12:56:16.601"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.164" endtime="20220720 12:56:16.601"/>
+</kw>
+<kw name="Xls To Dict" library="Excel_To_Dictionary">
+<var>${location_mapping_dic}</var>
+<arg>${SalesValidationConfig}</arg>
+<msg timestamp="20220720 12:56:16.665" level="INFO">${location_mapping_dic} = {'VHCLE Holdings': {'Low Brau': 'LowBrau', 'Milk Money': 'MILK MONEY'}, 'Taub Family Outpost': {'Taub Family Outpost': 'Taub Family Outpost'}, 'FLX Hospitality': {'F L X Fry Bird': 'F.L.X. Fry Bird', ...</msg>
+<status status="PASS" starttime="20220720 12:56:16.601" endtime="20220720 12:56:16.665"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${location_mapping_dic}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.666" level="INFO">{'VHCLE Holdings': {'Low Brau': 'LowBrau', 'Milk Money': 'MILK MONEY'}, 'Taub Family Outpost': {'Taub Family Outpost': 'Taub Family Outpost'}, 'FLX Hospitality': {'F L X Fry Bird': 'F.L.X. Fry Bird', 'F L X Provisions - Geneva': 'F.L.X. Provisions', 'F L X Wienery Dundee': 'FLX Wienery', 'Quincy on Market': 'Quincy on Market'}, 'Wise Sons Deli': {'Wise Sons Jewish Delicatessen - Culver City': 'WSD Culver City', 'Wise Sons Jewish Delicatessen - Downtown Oakland': 'WSD Downtown Oakland', 'Wise Sons Jewish Delicatessen - Fillmore': 'x WSD Fillmore', 'Wise Sons Jewish Delicatessen - Hayes Valley': 'WSD Hayes Valley', 'Wise Sons Jewish Delicatessen - Temescal': 'x WSD Temescal'}, 'Noe Valley Bakery': {'Noe Valley Bakery- 24th Street': '24th Street', 'Noe Valley Bakery- West Portal': 'West Portal'}, 'Park Bars': {'Park Bars-Bar Flores': 'BF', 'Park Bars-Bar Flores Taco Cart': 'Flores Taco Cart', 'Park Bars-Lowboy': 'LB', 'Park Bars-Park Bars Consolidated': 'PK', 'Park Bars-To Go Window': 'Window'}, 'Firetrail Pizza': {'FIRETRAIL PIZZA - Reno': 'Reno', 'FIRETRAIL PIZZA - Spark': 'SPARK Social SF'}, 'Mission NPT': {'Mission NPT': 'Mission'}, 'United States of Espresso': {'United States of Espresso- USC Truck': 'USC', 'United States of Espresso- Venice Cafe': 'USofE Venice Cafe'}, 'Broad Street Oyster Co': {'Broad Street Coffee Co': 'Broad Street Coffee Co.', 'Broad Street Oyster Company- Smorgasburg Miami': 'Smorgasburg Miami', 'Broad Street Oyster- Santa Barbara': 'Santa Barbara'}, 'Senor Sisig Corp': {'SENOR SISIG - Webster': '1628 Webster', 'SENOR SISIG - Valencia': '990 Valencia', 'SENOR SISIG - Catering-Commissary': 'Catering', 'SENOR SISIG - Truck1': 'Truck 1', 'SENOR SISIG - Truck2': 'Truck 2', 'SENOR SISIG - Truck3': 'Truck 3', 'SENOR SISIG - Truck4': 'Truck 4'}}</msg>
+<status status="PASS" starttime="20220720 12:56:16.665" endtime="20220720 12:56:16.666"/>
+</kw>
+<kw name="Load Config Details" library="ExcelActivities">
+<var>${ConfigReadStatus}</var>
+<var>${ConfigSettings}</var>
+<var>${ClientFullDetails}</var>
+<var>${loginwise_client_dic}</var>
+<arg>${SalesValidationConfig}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${reason}</var>
+<arg>Open Workbook</arg>
+<arg>${SalesValidationConfig}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${SalesValidationConfig}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20220720 12:56:16.734" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001FF51F51088&gt;</msg>
+<msg timestamp="20220720 12:56:16.735" level="INFO">D:\ROBOCORP_TEMP\holotree\5a1fac3c5_9fcd2534\lib\site-packages\openpyxl\worksheet\_reader.py:312: UserWarning: Data Validation extension is not supported and will be removed
+  warn(msg)</msg>
+<status status="PASS" starttime="20220720 12:56:16.667" endtime="20220720 12:56:16.735"/>
+</kw>
+<msg timestamp="20220720 12:56:16.735" level="INFO">${status} = PASS</msg>
+<msg timestamp="20220720 12:56:16.735" level="INFO">${reason} = &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001FF51F51088&gt;</msg>
+<status status="PASS" starttime="20220720 12:56:16.666" endtime="20220720 12:56:16.735"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${SettingsDetails}</var>
+<arg>name=Settings</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220720 12:56:16.737" level="INFO">Created table: Table(columns=['KitchensyncUrl', 'KitchensyncUserName', 'KitchensyncPassword', 'SquareUpUrl', 'Insight', 'Squareup', 'RecipientMail1', 'RecipientMail2', 'RecipientMail3', 'RecipientMail4', 'Run'], rows=1)</msg>
+<msg timestamp="20220720 12:56:16.737" level="INFO">${SettingsDetails} = Table(columns=['KitchensyncUrl', 'KitchensyncUserName', 'KitchensyncPassword', 'SquareUpUrl', 'Insight', 'Squareup', 'RecipientMail1', 'RecipientMail2', 'RecipientMail3', 'RecipientMail4', 'Run'], row...</msg>
+<status status="PASS" starttime="20220720 12:56:16.736" endtime="20220720 12:56:16.737"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${settings_details}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.737" level="INFO">Table(columns=['KitchensyncUrl', 'KitchensyncUserName', 'KitchensyncPassword', 'SquareUpUrl', 'Insight', 'Squareup', 'RecipientMail1', 'RecipientMail2', 'RecipientMail3', 'RecipientMail4', 'Run'], rows=1)</msg>
+<status status="PASS" starttime="20220720 12:56:16.737" endtime="20220720 12:56:16.737"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{SettingsDetails}</value>
+<iter>
+<var name="${row}">{'KitchensyncUrl': 'https://calendar.kitchensync.us/', 'KitchensyncUserName': 'admin.kitchensync@analytix.com', 'KitchensyncPassword': 'KitchenSync@123', 'SquareUpUrl': 'https://squareup.com/us/en', '...</var>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ConfigSettings}</var>
+<arg>${row}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220720 12:56:16.738" level="INFO">${ConfigSettings} = {'KitchensyncUrl': 'https://calendar.kitchensync.us/', 'KitchensyncUserName': 'admin.kitchensync@analytix.com', 'KitchensyncPassword': 'KitchenSync@123', 'SquareUpUrl': 'https://squareup.com/us/en', '...</msg>
+<status status="PASS" starttime="20220720 12:56:16.738" endtime="20220720 12:56:16.738"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.738" endtime="20220720 12:56:16.738"/>
+</iter>
+<status status="PASS" starttime="20220720 12:56:16.737" endtime="20220720 12:56:16.738"/>
+</for>
+<if>
+<branch type="IF" condition="'${ConfigSettings}[Run]' == 'Daily'">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${ClientTable}</var>
+<arg>name=ClientList_Day</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<status status="NOT RUN" starttime="20220720 12:56:16.739" endtime="20220720 12:56:16.739"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${ClientTable}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220720 12:56:16.739" endtime="20220720 12:56:16.739"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:56:16.739" endtime="20220720 12:56:16.739"/>
+</branch>
+<branch type="ELSE">
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${ClientTable}</var>
+<arg>name=ClientList_Mon</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220720 12:56:16.740" level="INFO">Created table: Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)</msg>
+<msg timestamp="20220720 12:56:16.740" level="INFO">${ClientTable} = Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)</msg>
+<status status="PASS" starttime="20220720 12:56:16.739" endtime="20220720 12:56:16.740"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${ClientTable}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.741" level="INFO">Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)</msg>
+<status status="PASS" starttime="20220720 12:56:16.740" endtime="20220720 12:56:16.741"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.739" endtime="20220720 12:56:16.741"/>
+</branch>
+<status status="PASS" starttime="20220720 12:56:16.739" endtime="20220720 12:56:16.741"/>
+</if>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${SquareupLogins}</var>
+<arg>name=SquareUpLogins</arg>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20220720 12:56:16.741" level="INFO">Created table: Table(columns=['UserName', 'Password', 'Timezone', 'LoginCategory'], rows=4)</msg>
+<msg timestamp="20220720 12:56:16.741" level="INFO">${SquareupLogins} = Table(columns=['UserName', 'Password', 'Timezone', 'LoginCategory'], rows=4)</msg>
+<status status="PASS" starttime="20220720 12:56:16.741" endtime="20220720 12:56:16.741"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${SquareupLogins}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.742" level="INFO">Table(columns=['UserName', 'Password', 'Timezone', 'LoginCategory'], rows=4)</msg>
+<status status="PASS" starttime="20220720 12:56:16.742" endtime="20220720 12:56:16.742"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20220720 12:56:16.742" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x000001FF51F51088&gt;</msg>
+<status status="PASS" starttime="20220720 12:56:16.742" endtime="20220720 12:56:16.742"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${ClientFullDetails}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220720 12:56:16.742" level="INFO">${ClientFullDetails} = []</msg>
+<status status="PASS" starttime="20220720 12:56:16.742" endtime="20220720 12:56:16.742"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{ClientTable}</value>
+<iter>
+<var name="${row}">{'Client': 'VHCLE Holdings', 'Year': 2022, 'FromRange': 'May 23 - Jun 26', 'ToRange': 'May 23 - Jun 26', 'UserName': 'karijo@vhcle-holdings.com', 'Timezone': 'Eastern Standard Time', 'POSName': 'Milk ...</var>
+<kw name="Append To List" library="Collections">
+<arg>${ClientFullDetails}</arg>
+<arg>${row}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220720 12:56:16.743" endtime="20220720 12:56:16.743"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.743" endtime="20220720 12:56:16.743"/>
+</iter>
+<status status="PASS" starttime="20220720 12:56:16.742" endtime="20220720 12:56:16.743"/>
+</for>
+<kw name="Log List" library="Collections">
+<arg>${ClientFullDetails}</arg>
+<doc>Logs the length and contents of the ``list`` using given ``level``.</doc>
+<msg timestamp="20220720 12:56:16.744" level="INFO">List has one item:
+{'Client': 'VHCLE Holdings', 'Year': 2022, 'FromRange': 'May 23 - Jun 26', 'ToRange': 'May 23 - Jun 26', 'UserName': 'karijo@vhcle-holdings.com', 'Timezone': 'Eastern Standard Time', 'POSName': 'Milk Money', 'Password': 'Kelan!Sean2', 'LoginCategory': 'Karijo'}</msg>
+<status status="PASS" starttime="20220720 12:56:16.743" endtime="20220720 12:56:16.744"/>
+</kw>
+<kw name="Sort Table By Column" library="RPA.Tables">
+<arg>${ClientTable}</arg>
+<arg>LoginCategory</arg>
+<arg>ascending=${FALSE}</arg>
+<doc>Sort a table in-place according to ``column``.</doc>
+<status status="PASS" starttime="20220720 12:56:16.744" endtime="20220720 12:56:16.744"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${loginwise_client_dic}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220720 12:56:16.745" level="INFO">${loginwise_client_dic} = {}</msg>
+<status status="PASS" starttime="20220720 12:56:16.744" endtime="20220720 12:56:16.745"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{SquareupLogins}</value>
+<iter>
+<var name="${element}">{'UserName': 'operations@Senorsisig.com', 'Password': 'UF42JRDL2H8*75ciG', 'Timezone': 'Pacific Standard Time', 'LoginCategory': 'Senor'}</var>
+<kw name="Copy Table" library="RPA.Tables">
+<var>${temp_table}</var>
+<arg>${ClientTable}</arg>
+<doc>Make a copy of a table object.</doc>
+<msg timestamp="20220720 12:56:16.745" level="INFO">${temp_table} = Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)</msg>
+<status status="PASS" starttime="20220720 12:56:16.745" endtime="20220720 12:56:16.745"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${temp_table}</arg>
+<arg>LoginCategory</arg>
+<arg>==</arg>
+<arg>${element}[LoginCategory]</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<msg timestamp="20220720 12:56:16.746" level="INFO">Filtered -1 rows</msg>
+<status status="PASS" starttime="20220720 12:56:16.746" endtime="20220720 12:56:16.746"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${row_count}</var>
+<arg>${temp_table}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220720 12:56:16.746" level="INFO">Length is 0</msg>
+<msg timestamp="20220720 12:56:16.747" level="INFO">${row_count} = 0</msg>
+<status status="PASS" starttime="20220720 12:56:16.746" endtime="20220720 12:56:16.747"/>
+</kw>
+<if>
+<branch type="IF" condition="${row_count}&gt;0">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${loginwise_client_dic}</arg>
+<arg>${element}[LoginCategory]--${element}[UserName]--${element}[Password]--${element}[Timezone]=${temp_table}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220720 12:56:16.747" endtime="20220720 12:56:16.747"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:56:16.747" endtime="20220720 12:56:16.747"/>
+</branch>
+<status status="PASS" starttime="20220720 12:56:16.747" endtime="20220720 12:56:16.747"/>
+</if>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.747" level="INFO">{'UserName': 'operations@Senorsisig.com', 'Password': 'UF42JRDL2H8*75ciG', 'Timezone': 'Pacific Standard Time', 'LoginCategory': 'Senor'}</msg>
+<status status="PASS" starttime="20220720 12:56:16.747" endtime="20220720 12:56:16.747"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${temp_table}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.748" level="INFO">Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=0)</msg>
+<status status="PASS" starttime="20220720 12:56:16.748" endtime="20220720 12:56:16.748"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.745" endtime="20220720 12:56:16.748"/>
+</iter>
+<iter>
+<var name="${element}">{'UserName': 'admin@KitchenSync.us', 'Password': 'KitSync#2022', 'Timezone': 'Pacific Standard Time', 'LoginCategory': 'Admin1'}</var>
+<kw name="Copy Table" library="RPA.Tables">
+<var>${temp_table}</var>
+<arg>${ClientTable}</arg>
+<doc>Make a copy of a table object.</doc>
+<msg timestamp="20220720 12:56:16.748" level="INFO">${temp_table} = Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)</msg>
+<status status="PASS" starttime="20220720 12:56:16.748" endtime="20220720 12:56:16.748"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${temp_table}</arg>
+<arg>LoginCategory</arg>
+<arg>==</arg>
+<arg>${element}[LoginCategory]</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<msg timestamp="20220720 12:56:16.749" level="INFO">Filtered -1 rows</msg>
+<status status="PASS" starttime="20220720 12:56:16.749" endtime="20220720 12:56:16.749"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${row_count}</var>
+<arg>${temp_table}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220720 12:56:16.749" level="INFO">Length is 0</msg>
+<msg timestamp="20220720 12:56:16.749" level="INFO">${row_count} = 0</msg>
+<status status="PASS" starttime="20220720 12:56:16.749" endtime="20220720 12:56:16.749"/>
+</kw>
+<if>
+<branch type="IF" condition="${row_count}&gt;0">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${loginwise_client_dic}</arg>
+<arg>${element}[LoginCategory]--${element}[UserName]--${element}[Password]--${element}[Timezone]=${temp_table}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220720 12:56:16.750" endtime="20220720 12:56:16.750"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:56:16.750" endtime="20220720 12:56:16.750"/>
+</branch>
+<status status="PASS" starttime="20220720 12:56:16.749" endtime="20220720 12:56:16.750"/>
+</if>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.750" level="INFO">{'UserName': 'admin@KitchenSync.us', 'Password': 'KitSync#2022', 'Timezone': 'Pacific Standard Time', 'LoginCategory': 'Admin1'}</msg>
+<status status="PASS" starttime="20220720 12:56:16.750" endtime="20220720 12:56:16.750"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${temp_table}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.751" level="INFO">Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=0)</msg>
+<status status="PASS" starttime="20220720 12:56:16.750" endtime="20220720 12:56:16.751"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.748" endtime="20220720 12:56:16.751"/>
+</iter>
+<iter>
+<var name="${element}">{'UserName': 'karijo@vhcle-holdings.com', 'Password': 'Kelan!Sean2', 'Timezone': 'Eastern Standard Time', 'LoginCategory': 'Karijo'}</var>
+<kw name="Copy Table" library="RPA.Tables">
+<var>${temp_table}</var>
+<arg>${ClientTable}</arg>
+<doc>Make a copy of a table object.</doc>
+<msg timestamp="20220720 12:56:16.751" level="INFO">${temp_table} = Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)</msg>
+<status status="PASS" starttime="20220720 12:56:16.751" endtime="20220720 12:56:16.751"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${temp_table}</arg>
+<arg>LoginCategory</arg>
+<arg>==</arg>
+<arg>${element}[LoginCategory]</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<msg timestamp="20220720 12:56:16.752" level="INFO">Filtered 0 rows</msg>
+<status status="PASS" starttime="20220720 12:56:16.751" endtime="20220720 12:56:16.752"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${row_count}</var>
+<arg>${temp_table}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220720 12:56:16.752" level="INFO">Length is 1</msg>
+<msg timestamp="20220720 12:56:16.752" level="INFO">${row_count} = 1</msg>
+<status status="PASS" starttime="20220720 12:56:16.752" endtime="20220720 12:56:16.752"/>
+</kw>
+<if>
+<branch type="IF" condition="${row_count}&gt;0">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${loginwise_client_dic}</arg>
+<arg>${element}[LoginCategory]--${element}[UserName]--${element}[Password]--${element}[Timezone]=${temp_table}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="PASS" starttime="20220720 12:56:16.754" endtime="20220720 12:56:16.754"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.752" endtime="20220720 12:56:16.754"/>
+</branch>
+<status status="PASS" starttime="20220720 12:56:16.752" endtime="20220720 12:56:16.754"/>
+</if>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.754" level="INFO">{'UserName': 'karijo@vhcle-holdings.com', 'Password': 'Kelan!Sean2', 'Timezone': 'Eastern Standard Time', 'LoginCategory': 'Karijo'}</msg>
+<status status="PASS" starttime="20220720 12:56:16.754" endtime="20220720 12:56:16.754"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${temp_table}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.755" level="INFO">Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)</msg>
+<status status="PASS" starttime="20220720 12:56:16.755" endtime="20220720 12:56:16.755"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.751" endtime="20220720 12:56:16.755"/>
+</iter>
+<iter>
+<var name="${element}">{'UserName': 'admin@KitchenSync.us', 'Password': 'KitSync#2022', 'Timezone': 'Eastern Standard Time', 'LoginCategory': 'Admin2'}</var>
+<kw name="Copy Table" library="RPA.Tables">
+<var>${temp_table}</var>
+<arg>${ClientTable}</arg>
+<doc>Make a copy of a table object.</doc>
+<msg timestamp="20220720 12:56:16.755" level="INFO">${temp_table} = Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)</msg>
+<status status="PASS" starttime="20220720 12:56:16.755" endtime="20220720 12:56:16.755"/>
+</kw>
+<kw name="Filter Table By Column" library="RPA.Tables">
+<arg>${temp_table}</arg>
+<arg>LoginCategory</arg>
+<arg>==</arg>
+<arg>${element}[LoginCategory]</arg>
+<doc>Remove all rows where column values don't match the
+given condition.</doc>
+<msg timestamp="20220720 12:56:16.756" level="INFO">Filtered -1 rows</msg>
+<status status="PASS" starttime="20220720 12:56:16.756" endtime="20220720 12:56:16.756"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${row_count}</var>
+<arg>${temp_table}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220720 12:56:16.756" level="INFO">Length is 0</msg>
+<msg timestamp="20220720 12:56:16.756" level="INFO">${row_count} = 0</msg>
+<status status="PASS" starttime="20220720 12:56:16.756" endtime="20220720 12:56:16.756"/>
+</kw>
+<if>
+<branch type="IF" condition="${row_count}&gt;0">
+<kw name="Set To Dictionary" library="Collections">
+<arg>${loginwise_client_dic}</arg>
+<arg>${element}[LoginCategory]--${element}[UserName]--${element}[Password]--${element}[Timezone]=${temp_table}</arg>
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" starttime="20220720 12:56:16.757" endtime="20220720 12:56:16.757"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:56:16.757" endtime="20220720 12:56:16.757"/>
+</branch>
+<status status="PASS" starttime="20220720 12:56:16.756" endtime="20220720 12:56:16.757"/>
+</if>
+<kw name="Log" library="BuiltIn">
+<arg>${element}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.757" level="INFO">{'UserName': 'admin@KitchenSync.us', 'Password': 'KitSync#2022', 'Timezone': 'Eastern Standard Time', 'LoginCategory': 'Admin2'}</msg>
+<status status="PASS" starttime="20220720 12:56:16.757" endtime="20220720 12:56:16.757"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${temp_table}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.758" level="INFO">Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=0)</msg>
+<status status="PASS" starttime="20220720 12:56:16.757" endtime="20220720 12:56:16.758"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.755" endtime="20220720 12:56:16.758"/>
+</iter>
+<status status="PASS" starttime="20220720 12:56:16.745" endtime="20220720 12:56:16.758"/>
+</for>
+<kw name="Log" library="BuiltIn">
+<arg>${loginwise_client_dic}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220720 12:56:16.758" level="INFO">{'Karijo--karijo@vhcle-holdings.com--Kelan!Sean2--Eastern Standard Time': Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows=1)}</msg>
+<status status="PASS" starttime="20220720 12:56:16.758" endtime="20220720 12:56:16.758"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>PASS</arg>
+<arg>${ConfigSettings}</arg>
+<arg>${ClientFullDetails}</arg>
+<arg>${loginwise_client_dic}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220720 12:56:16.759" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220720 12:56:16.758" endtime="20220720 12:56:16.759"/>
+</kw>
+<status status="PASS" starttime="20220720 12:56:16.735" endtime="20220720 12:56:16.759"/>
+</branch>
+<branch type="ELSE">
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>FAIL</arg>
+<arg>1</arg>
+<arg>1</arg>
+<arg>1</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" starttime="20220720 12:56:16.759" endtime="20220720 12:56:16.759"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:56:16.759" endtime="20220720 12:56:16.760"/>
+</branch>
+<status status="PASS" starttime="20220720 12:56:16.735" endtime="20220720 12:56:16.760"/>
+</if>
+<msg timestamp="20220720 12:56:16.760" level="INFO">${ConfigReadStatus} = PASS</msg>
+<msg timestamp="20220720 12:56:16.760" level="INFO">${ConfigSettings} = {'KitchensyncUrl': 'https://calendar.kitchensync.us/', 'KitchensyncUserName': 'admin.kitchensync@analytix.com', 'KitchensyncPassword': 'KitchenSync@123', 'SquareUpUrl': 'https://squareup.com/us/en', '...</msg>
+<msg timestamp="20220720 12:56:16.760" level="INFO">${ClientFullDetails} = [{'Client': 'VHCLE Holdings', 'Year': 2022, 'FromRange': 'May 23 - Jun 26', 'ToRange': 'May 23 - Jun 26', 'UserName': 'karijo@vhcle-holdings.com', 'Timezone': 'Eastern Standard Time', 'POSName': 'Milk...</msg>
+<msg timestamp="20220720 12:56:16.760" level="INFO">${loginwise_client_dic} = {'Karijo--karijo@vhcle-holdings.com--Kelan!Sean2--Eastern Standard Time': Table(columns=['Client', 'Year', 'FromRange', 'ToRange', 'UserName', 'Timezone', 'POSName', 'Password', 'LoginCategory'], rows...</msg>
+<status status="PASS" starttime="20220720 12:56:16.666" endtime="20220720 12:56:16.760"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ConfigReadStatus}' == 'PASS'">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{list_all_data}</var>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220720 12:56:16.762" level="INFO">&amp;{list_all_data} = { }</msg>
+<status status="PASS" starttime="20220720 12:56:16.760" endtime="20220720 12:56:16.762"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ConfigSettings}[Insight]' == 'Yes'">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status1}</var>
+<var>${reason1}</var>
+<arg>Open Website To Login P2</arg>
+<arg>${ConfigSettings}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Open Website To Login P2" library="SiteLogin">
+<arg>${ConfigSettings}</arg>
+<kw name="Get Current Date" library="DateTime">
+<var>${current_date}</var>
+<arg>result_format=%m/%d/%Y</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20220720 12:56:16.763" level="INFO">${current_date} = 07/20/2022</msg>
+<status status="PASS" starttime="20220720 12:56:16.763" endtime="20220720 12:56:16.763"/>
+</kw>
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220720 12:56:16.763" endtime="20220720 12:56:16.763"/>
+</kw>
+<kw name="Open Chrome Browser" library="RPA.Browser.Selenium">
+<arg>${ConfigSettings}[KitchensyncUrl]</arg>
+<doc>Open Chrome browser. See ``Open Available Browser`` for
+descriptions of arguments.</doc>
+<msg timestamp="20220720 12:56:16.764" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220720 12:56:30.390" level="INFO">Created download root directory: D:\ROBOCORP_TEMP\webdrivers</msg>
+<msg timestamp="20220720 12:56:30.391" level="INFO">Created symlink directory: D:\ROBOCORP_TEMP\webdrivers</msg>
+<msg timestamp="20220720 12:56:30.641" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20220720 12:56:34.518" level="INFO">Created Chrome browser with arguments: --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20220720 12:56:34.518" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: session not created: This version of ChromeDriver only supports Chrome version 100
+Current browser version is 103.0.5060.134 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20220720 12:56:34.518" level="INFO">Opening url 'https://calendar.kitchensync.us/'</msg>
+<status status="PASS" starttime="20220720 12:56:16.763" endtime="20220720 12:57:23.046"/>
+</kw>
+<kw name="Maximize Browser Window" library="RPA.Browser.Selenium">
+<doc>Maximizes current browser window.</doc>
+<kw name="Capture Page Screenshot" library="RPA.Browser.Selenium">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220720 12:57:23.051" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=103.0.5060.134)
+</msg>
+<status status="FAIL" starttime="20220720 12:57:23.049" endtime="20220720 12:57:23.067"/>
+</kw>
+<msg timestamp="20220720 12:57:23.068" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=103.0.5060.134)
+</msg>
+<msg timestamp="20220720 12:57:23.069" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=103.0.5060.134)
+</msg>
+<status status="FAIL" starttime="20220720 12:57:23.046" endtime="20220720 12:57:23.072"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.075" endtime="20220720 12:57:23.075"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${Retry}x</arg>
+<arg>${RetrySeconds}s</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>xpath://input[@id="Email"]</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.076" endtime="20220720 12:57:23.076"/>
+</kw>
+<kw name="Input Text" library="RPA.Browser.Selenium">
+<arg>xpath://input[@id="Email"]</arg>
+<arg>${ConfigSettings}[KitchensyncUserName]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.077" endtime="20220720 12:57:23.077"/>
+</kw>
+<kw name="Input Password" library="RPA.Browser.Selenium">
+<arg>xpath://input[@id="Password"]</arg>
+<arg>${ConfigSettings}[KitchensyncPassword]</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.078" endtime="20220720 12:57:23.078"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.078" endtime="20220720 12:57:23.078"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${Result}</var>
+<arg>xpath://button[contains(text(),"Login")]</arg>
+<doc>Is element visible</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.079" endtime="20220720 12:57:23.079"/>
+</kw>
+<if>
+<branch type="IF" condition="'${Result}'=='True'">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${Retry}x</arg>
+<arg>${RetrySeconds}s</arg>
+<arg>Click Element</arg>
+<arg>xpath://button[contains(text(),"Login")]</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.080" endtime="20220720 12:57:23.080"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${Retry}x</arg>
+<arg>${RetrySeconds}s</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>xpath://input[@type="search"]</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.081" endtime="20220720 12:57:23.081"/>
+</kw>
+<kw name="Is Element Visible" library="RPA.Browser.Selenium">
+<var>${HomeVisible}</var>
+<arg>xpath://input[@type="search"]</arg>
+<doc>Is element visible</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.081" endtime="20220720 12:57:23.081"/>
+</kw>
+<if>
+<branch type="IF" condition="'${HomeVisible}' == 'False'">
+<kw name="Write Status To Run Report" library="ExcelActivities">
+<arg>${EMPTY}</arg>
+<arg>${current_date}</arg>
+<arg>${ConfigSettings}[KitchensyncUserName] login failed. Retrying once again..</arg>
+<status status="NOT RUN" starttime="20220720 12:57:23.082" endtime="20220720 12:57:23.082"/>
+</kw>
+<kw name="Open Website To Login P2" library="SiteLogin">
+<arg>${ConfigSettings}</arg>
+<status status="NOT RUN" starttime="20220720 12:57:23.082" endtime="20220720 12:57:23.082"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.082" endtime="20220720 12:57:23.083"/>
+</branch>
+<branch type="ELSE">
+<kw name="Write Status To Run Report" library="ExcelActivities">
+<arg>${EMPTY}</arg>
+<arg>${current_date}</arg>
+<arg>${ConfigSettings}[KitchensyncUserName] login Succesfully.</arg>
+<status status="NOT RUN" starttime="20220720 12:57:23.083" endtime="20220720 12:57:23.083"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.083" endtime="20220720 12:57:23.083"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.082" endtime="20220720 12:57:23.083"/>
+</if>
+<status status="NOT RUN" starttime="20220720 12:57:23.080" endtime="20220720 12:57:23.083"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.079" endtime="20220720 12:57:23.083"/>
+</if>
+<status status="FAIL" starttime="20220720 12:56:16.762" endtime="20220720 12:57:23.084"/>
+</kw>
+<msg timestamp="20220720 12:57:23.084" level="INFO">${status1} = FAIL</msg>
+<msg timestamp="20220720 12:57:23.085" level="INFO">${reason1} = NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=103.0.5060.134)
+</msg>
+<status status="PASS" starttime="20220720 12:56:16.762" endtime="20220720 12:57:23.085"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status1}' == 'PASS'">
+<kw name="Write Log Text" library="Log">
+<arg>'Login- Open Website To Login:'</arg>
+<arg>${reason1}'Login Succesfully'</arg>
+<arg>Output</arg>
+<arg>log</arg>
+<doc>type of log (exception/error etc), reason-note, location of file ,file name
+Ret:
+None</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.085" endtime="20220720 12:57:23.086"/>
+</kw>
+<for flavor="IN">
+<var>${client}</var>
+<value>@{ClientFullDetails}</value>
+<iter>
+<var name="${client}"/>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${KitchensyncStatus}</var>
+<var>${KitchensyncReason}</var>
+<arg>Capture Sales Details From Kitchensync P3</arg>
+<arg>${client}</arg>
+<arg>${ConfigSettings}[Run]</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.086" endtime="20220720 12:57:23.086"/>
+</kw>
+<if>
+<branch type="IF" condition="'${KitchensyncStatus}' == 'PASS'">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${Retry}x</arg>
+<arg>${RetrySeconds}s</arg>
+<arg>Click Element</arg>
+<arg>xpath://div[@class="main-menu__logo img"]</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.087" endtime="20220720 12:57:23.087"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.087" endtime="20220720 12:57:23.087"/>
+</branch>
+<branch type="ELSE">
+<kw name="Write Status To Run Report" library="ExcelActivities">
+<arg>${client}[Client]</arg>
+<arg>${current_date}</arg>
+<arg>Capturing the sales details from Kitchensync failed due to ${KitchensyncReason}.</arg>
+<status status="NOT RUN" starttime="20220720 12:57:23.087" endtime="20220720 12:57:23.088"/>
+</kw>
+<kw name="Continue For Loop" library="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.088" endtime="20220720 12:57:23.088"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.087" endtime="20220720 12:57:23.088"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.087" endtime="20220720 12:57:23.088"/>
+</if>
+<status status="NOT RUN" starttime="20220720 12:57:23.086" endtime="20220720 12:57:23.088"/>
+</iter>
+<status status="NOT RUN" starttime="20220720 12:57:23.086" endtime="20220720 12:57:23.089"/>
+</for>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.089" endtime="20220720 12:57:23.089"/>
+</kw>
+<kw name="Logout Insight" library="KitchensyncProcess">
+<status status="NOT RUN" starttime="20220720 12:57:23.089" endtime="20220720 12:57:23.089"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.085" endtime="20220720 12:57:23.090"/>
+</branch>
+<branch type="ELSE">
+<kw name="Write Log Text" library="Log">
+<arg>'Login- Open Website To Login:'</arg>
+<arg>${reason1}</arg>
+<arg>Output</arg>
+<arg>log</arg>
+<doc>type of log (exception/error etc), reason-note, location of file ,file name
+Ret:
+None</doc>
+<msg timestamp="20220720 12:57:23.093" level="INFO">'Login- Open Website To Login:' NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=103.0.5060.134)
+ Output log</msg>
+<status status="PASS" starttime="20220720 12:57:23.090" endtime="20220720 12:57:23.094"/>
+</kw>
+<kw name="Write Status To Run Report" library="ExcelActivities">
+<arg>${client}[Client]</arg>
+<arg>${current_date}</arg>
+<arg>Login to Kitchensync failed due to ${reason1}.</arg>
+<msg timestamp="20220720 12:57:23.096" level="FAIL">Variable '${client}' not found.</msg>
+<status status="FAIL" starttime="20220720 12:57:23.094" endtime="20220720 12:57:23.096"/>
+</kw>
+<kw name="Close All Browsers" library="RPA.Browser.Selenium">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.097" endtime="20220720 12:57:23.097"/>
+</kw>
+<status status="FAIL" starttime="20220720 12:57:23.090" endtime="20220720 12:57:23.097"/>
+</branch>
+<status status="FAIL" starttime="20220720 12:57:23.085" endtime="20220720 12:57:23.097"/>
+</if>
+<status status="FAIL" starttime="20220720 12:56:16.762" endtime="20220720 12:57:23.098"/>
+</branch>
+<status status="FAIL" starttime="20220720 12:56:16.762" endtime="20220720 12:57:23.098"/>
+</if>
+<kw name="Read Json" library="Excel_Operations">
+<var>${list_all_data}</var>
+<arg>${JsonFilePath}</arg>
+<status status="NOT RUN" starttime="20220720 12:57:23.099" endtime="20220720 12:57:23.099"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.099" endtime="20220720 12:57:23.099"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ConfigSettings}[Squareup]' == 'Yes'">
+<for flavor="IN">
+<var>${key}</var>
+<value>@{loginwise_client_dic.keys()}</value>
+<iter>
+<var name="${key}"/>
+<kw name="Log" library="BuiltIn">
+<arg>${key}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.100" endtime="20220720 12:57:23.100"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${loginwise_client_dic["${key}"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.101" endtime="20220720 12:57:23.101"/>
+</kw>
+<kw name="Get Table Dimensions" library="RPA.Tables">
+<var>${rows}</var>
+<var>${columns}</var>
+<arg>${loginwise_client_dic["${key}"]}</arg>
+<doc>Return table dimensions, as (rows, columns).</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.101" endtime="20220720 12:57:23.101"/>
+</kw>
+<if>
+<branch type="IF" condition="${rows} &gt; 0">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status1}</var>
+<var>${reason1}</var>
+<arg>Login to SquareUp</arg>
+<arg>${ConfigSettings}</arg>
+<arg>${key}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.102" endtime="20220720 12:57:23.102"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status1}' == 'PASS'">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${Status3}</var>
+<var>${list_all_data_temp}</var>
+<arg>Select Each Client</arg>
+<arg>${loginwise_client_dic["${key}"]}</arg>
+<arg>${list_all_data}</arg>
+<arg>${location_mapping_dic}</arg>
+<arg>${ConfigSettings}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.102" endtime="20220720 12:57:23.102"/>
+</kw>
+<if>
+<branch type="IF" condition="'${Status3}' == 'FAIL'">
+<kw name="Continue For Loop" library="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.103" endtime="20220720 12:57:23.103"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.102" endtime="20220720 12:57:23.103"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${list_all_data}</var>
+<arg>${list_all_data_temp}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.103" endtime="20220720 12:57:23.104"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.103" endtime="20220720 12:57:23.104"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.102" endtime="20220720 12:57:23.104"/>
+</if>
+<kw name="Close Browser" library="RPA.Browser.Selenium">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.104" endtime="20220720 12:57:23.104"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.102" endtime="20220720 12:57:23.104"/>
+</branch>
+<branch type="ELSE">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${RetryStatus1}</var>
+<var>${RetryReason1}</var>
+<arg>Login to SquareUp</arg>
+<arg>${ConfigSettings}</arg>
+<arg>${key}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.104" endtime="20220720 12:57:23.104"/>
+</kw>
+<if>
+<branch type="IF" condition="'${RetryStatus1}' == 'PASS'">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${Status3}</var>
+<var>${list_all_data_temp}</var>
+<arg>Select Each Client</arg>
+<arg>${loginwise_client_dic["${key}"]}</arg>
+<arg>${list_all_data}</arg>
+<arg>${location_mapping_dic}</arg>
+<arg>${ConfigSettings}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.105" endtime="20220720 12:57:23.105"/>
+</kw>
+<if>
+<branch type="IF" condition="'${Status3}' == 'FAIL'">
+<kw name="Continue For Loop" library="BuiltIn">
+<doc>Skips the current FOR loop iteration and continues from the next.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.105" endtime="20220720 12:57:23.105"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.105" endtime="20220720 12:57:23.106"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${list_all_data}</var>
+<arg>${list_all_data_temp}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.106" endtime="20220720 12:57:23.106"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.106" endtime="20220720 12:57:23.106"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.105" endtime="20220720 12:57:23.106"/>
+</if>
+<kw name="Close Browser" library="RPA.Browser.Selenium">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.106" endtime="20220720 12:57:23.106"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.105" endtime="20220720 12:57:23.106"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.105" endtime="20220720 12:57:23.107"/>
+</if>
+<status status="NOT RUN" starttime="20220720 12:57:23.104" endtime="20220720 12:57:23.107"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.102" endtime="20220720 12:57:23.107"/>
+</if>
+<status status="NOT RUN" starttime="20220720 12:57:23.101" endtime="20220720 12:57:23.107"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.101" endtime="20220720 12:57:23.107"/>
+</if>
+<status status="NOT RUN" starttime="20220720 12:57:23.100" endtime="20220720 12:57:23.107"/>
+</iter>
+<status status="NOT RUN" starttime="20220720 12:57:23.100" endtime="20220720 12:57:23.107"/>
+</for>
+<status status="NOT RUN" starttime="20220720 12:57:23.099" endtime="20220720 12:57:23.107"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.099" endtime="20220720 12:57:23.107"/>
+</if>
+<kw name="Log" library="BuiltIn">
+<arg>${list_all_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.108" endtime="20220720 12:57:23.108"/>
+</kw>
+<if>
+<branch type="IF" condition="'${ConfigSettings}[Run]' == 'Monthly'">
+<kw name="Prepare Outputsheet" library="Functions">
+<arg>${list_all_data}</arg>
+<arg>${MonthlyOutputSheetPath}</arg>
+<status status="NOT RUN" starttime="20220720 12:57:23.108" endtime="20220720 12:57:23.108"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.108" endtime="20220720 12:57:23.108"/>
+</branch>
+<branch type="ELSE">
+<kw name="Prepare Outputsheet" library="Functions">
+<arg>${list_all_data}</arg>
+<arg>${OutputSheetPath}</arg>
+<status status="NOT RUN" starttime="20220720 12:57:23.108" endtime="20220720 12:57:23.108"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.108" endtime="20220720 12:57:23.108"/>
+</branch>
+<status status="NOT RUN" starttime="20220720 12:57:23.108" endtime="20220720 12:57:23.108"/>
+</if>
+<status status="FAIL" starttime="20220720 12:56:16.760" endtime="20220720 12:57:23.109"/>
+</branch>
+<branch type="ELSE">
+<kw name="Write Log Text" library="Log">
+<arg>'tasks- Load Config Details:'</arg>
+<arg>'Failed to load config details. Please try again later'</arg>
+<arg>Output</arg>
+<arg>log</arg>
+<doc>type of log (exception/error etc), reason-note, location of file ,file name
+Ret:
+None</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.109" endtime="20220720 12:57:23.109"/>
+</kw>
+<status status="NOT RUN" starttime="20220720 12:57:23.109" endtime="20220720 12:57:23.109"/>
+</branch>
+<status status="FAIL" starttime="20220720 12:56:16.760" endtime="20220720 12:57:23.109"/>
+</if>
+<kw name="Log" library="BuiltIn">
+<arg>${ConfigSettings}[RecipientMail1]</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.110" endtime="20220720 12:57:23.110"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${SUBJECT}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.110" endtime="20220720 12:57:23.110"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${mail_body}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.110" endtime="20220720 12:57:23.110"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${OutputSheetPath}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.110" endtime="20220720 12:57:23.110"/>
+</kw>
+<kw name="Write Log Text" library="Log">
+<arg>'tasks'</arg>
+<arg>'-------------------Run ended--------------------------'</arg>
+<arg>Output</arg>
+<arg>log</arg>
+<doc>type of log (exception/error etc), reason-note, location of file ,file name
+Ret:
+None</doc>
+<status status="NOT RUN" starttime="20220720 12:57:23.111" endtime="20220720 12:57:23.111"/>
+</kw>
+<status status="FAIL" starttime="20220720 12:56:16.139" endtime="20220720 12:57:23.111">Variable '${client}' not found.</status>
+</test>
+<doc>Template robot main suite.</doc>
+<status status="FAIL" starttime="20220720 12:54:42.572" endtime="20220720 12:57:23.112"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220720 12:57:23.068" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=103.0.5060.134)
+</msg>
+</errors>
+</robot>
